@@ -36,6 +36,17 @@ class Api::V1::BucketlistsController < ApplicationController
     end
   end
 
+   def destroy
+    bucketlist = Bucketlist.find_by(id: params[:id])
+
+    if bucketlist
+      bucketlist.destroy
+      render json: { message: "bucket have been destroyed" }
+    else
+      render json: { error: "bucket was not destroyed" }
+    end
+  end
+
   private
 
   def bucketlist_params
