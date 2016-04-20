@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-      resources :sessions
+      post "auth/login", to: "sessions#create"
+      get "auth/logout", to: "sessions#destroy"
     end
   end
 end

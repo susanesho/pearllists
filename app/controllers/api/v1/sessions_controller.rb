@@ -1,9 +1,11 @@
 class Api::V1::SessionsController < ApplicationController
 
   def create
-    user = User.find_by(email: params[:email], name: params[:name])
-    if user
-      render json: user
+    user = User.find_by(email: params[:email])
+
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: { message: "logged in"}
     else
       render json: { error: "user not found" }
     end
