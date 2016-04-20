@@ -24,6 +24,18 @@ class Api::V1::BucketlistsController < ApplicationController
     end
   end
 
+  def update
+  bucketlist = Bucketlist.find_by(id: params[:id])
+
+    if bucketlist
+      bucketlist.update(bucketlist_params)
+      bucketlist.save
+      render json: { message: "succesfully updated" }
+    else
+      render json: { error: "could not update bucketlist" }
+    end
+  end
+
   private
 
   def bucketlist_params
