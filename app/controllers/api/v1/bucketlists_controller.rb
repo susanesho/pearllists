@@ -15,6 +15,15 @@ class Api::V1::BucketlistsController < ApplicationController
     end
   end
 
+  def show
+    bucketlist = Bucketlist.find_by(id: params[:id])
+    if bucketlist
+      render json: bucketlist
+    else
+      render json: { error: "no bucket found" }
+    end
+  end
+
   private
 
   def bucketlist_params
