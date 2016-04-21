@@ -1,8 +1,7 @@
 == README
 
-[![Build Status](https://travis-ci.org/andela-oesho/pearllists.svg?branch=ft-implement-token-authentication-118084903)](https://travis-ci.org/andela-oesho/pearllists)
+[![Build Status](https://travis-ci.org/andela-oesho/pearllists.svg?branch=master)](https://travis-ci.org/andela-oesho/pearllists)
 [![Code Climate](https://codeclimate.com/github/andela-oesho/pearllists/badges/gpa.svg)](https://codeclimate.com/github/andela-oesho/pearllists)
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

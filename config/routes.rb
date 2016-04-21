@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-      resources :bucketlists
+      resources :bucketlists do
+        resources :items
+      end
     end
   end
 end

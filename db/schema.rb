@@ -11,19 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_160_421_121_519) do
-  create_table 'bucketlists', force: :cascade do |t|
-    t.string   'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer  'user_id'
+ActiveRecord::Schema.define(version: 20160421145304) do
+
+  create_table "bucketlists", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string   'name'
-    t.string   'email'
-    t.string   'password_digest'
-    t.datetime 'created_at',      null: false
-    t.datetime 'updated_at',      null: false
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "bucketlist_id"
+    t.boolean  "done",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
 end

@@ -24,7 +24,7 @@ class Api::V1::BucketlistsController < ApplicationController
   def show
     bucketlist = Bucketlist.find_by(id: params[:id])
 
-    if bucketlist && bucketlist.user == current_user
+    if bucketlist && bucketlist.is_user_bucket?(current_user)
       render json: bucketlist
     else
       render json: { error: "no bucket found" }
