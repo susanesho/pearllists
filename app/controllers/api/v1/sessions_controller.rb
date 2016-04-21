@@ -3,8 +3,8 @@ class Api::V1::SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      render json: { message: 'logged in' }
+      token = user.generate_auth_token
+      render json: { token: token }
     else
       render json: { error: 'user not found' }
     end
