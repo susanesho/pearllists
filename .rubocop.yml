@@ -1,10 +1,10 @@
 AllCops:
   Exclude:
     - "vendor/**/*"
+    - "config/initializers/**/*"
     - "db/schema.rb"
-    - "bin/*"
-    - "config/environments/*"
-    - "app/assets/*"
+    - "db/seeds.rb"
+    - "bin/spring"
   UseCache: false
 Style/CollectionMethods:
   Description: Preferred collection methods.
@@ -18,7 +18,7 @@ Style/CollectionMethods:
     reduce: inject
 Style/DotPosition:
   Description: Checks the position of the dot in multi-line method calls.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide
   Enabled: true
   EnforcedStyle: trailing
   SupportedStyles:
@@ -118,6 +118,14 @@ Style/StringLiteralsInInterpolation:
   - single_quotes
   - double_quotes
 Style/TrailingCommaInLiteral:
+  Description: Checks for trailing comma in parameter lists and literals.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas
+  Enabled: false
+  EnforcedStyleForMultiline: no_comma
+  SupportedStyles:
+  - comma
+  - no_comma
+Style/TrailingCommaInArguments:
   Description: Checks for trailing comma in parameter lists and literals.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas
   Enabled: false
