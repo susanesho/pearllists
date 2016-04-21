@@ -1,23 +1,30 @@
 class Api::V1::BucketlistsController < ApplicationController
+  before_action :authenticate
 
   def create
-    bucketlist = Bucketlist.create(bucketlist_params)
-    render json: bucketlist
+    bucketlist = Bucketlist.new(bucketlist_params)
+    bucketlist.user_id = current_user.id
+    if bucketlist.save
+      render json: bucketlist
+    else
+      render json:  bucketlist.errors
+    end
   end
 
-   def index
-    bucketlists = Bucketlist.all
+  def index
+    bucketlists = current_user.bucketlists
 
-    if bucketlists
-      render json: bucketlists
-    else
+    if bucketlists.empty?
       render json: { error: "no bucket have been created" }
+    else
+      render json: bucketlists
     end
   end
 
   def show
     bucketlist = Bucketlist.find_by(id: params[:id])
-    if bucketlist
+
+    if bucketlist && bucketlist.user == current_user
       render json: bucketlist
     else
       render json: { error: "no bucket found" }
@@ -25,9 +32,9 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def update
-  bucketlist = Bucketlist.find_by(id: params[:id])
+    bucketlist = Bucketlist.find_by(id: params[:id])
 
-    if bucketlist
+    if bucketlist && bucketlist.user == current_user
       bucketlist.update(bucketlist_params)
       bucketlist.save
       render json: { message: "succesfully updated" }
@@ -36,10 +43,10 @@ class Api::V1::BucketlistsController < ApplicationController
     end
   end
 
-   def destroy
+  def destroy
     bucketlist = Bucketlist.find_by(id: params[:id])
 
-    if bucketlist
+    if bucketlist && bucketlist.user == current_user
       bucketlist.destroy
       render json: { message: "bucket have been destroyed" }
     else
