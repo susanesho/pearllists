@@ -9,13 +9,13 @@ class Api::V1::ItemsController < ApplicationController
       item.bucketlist_id = bucketlist.id
 
       if item.save
-        render json: item
+        render json: item, status: 200
       else
-        render json: item.errors
+        render json: item.errors, status: 422
       end
 
     else
-      render json: { error: "bucket item cannot be created" }
+      render json: { error: "bucket item cannot be created" }, status: 403
     end
   end
 
@@ -25,9 +25,9 @@ class Api::V1::ItemsController < ApplicationController
 
     if item && check_bucketlist
       item.update(item_params)
-      render json: item
+      render json: item, status: 201
     else
-      render json: { error: "cannot update item" }
+      render json: { error: "cannot update item" }, status: 403
     end
 
   end
@@ -37,9 +37,9 @@ class Api::V1::ItemsController < ApplicationController
 
     if item && check_bucketlist
       item.destroy
-      render json: { message: "item have been successfully destroyed" }
+      render json: { message: "item have been successfully destroyed" }, status: 200
     else
-      render json: { error: "cannot destroy item" }
+      render json: { error: "cannot destroy item" }, status: 403
     end
   end
 

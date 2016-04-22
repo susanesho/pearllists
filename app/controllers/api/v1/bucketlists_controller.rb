@@ -5,9 +5,9 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlist = Bucketlist.new(bucketlist_params)
     bucketlist.user_id = current_user.id
     if bucketlist.save
-      render json: bucketlist
+      render json: bucketlist, status: 200
     else
-      render json:  bucketlist.errors
+      render json:  bucketlist.errors, status: 422
     end
   end
 
@@ -15,9 +15,9 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlists = current_user.bucketlists
 
     if bucketlists.empty?
-      render json: { error: "no bucket have been created" }
+      render json: { error: "no bucket have been created" }, status: 404
     else
-      render json: bucketlists
+      render json: bucketlists, status: 200
     end
   end
 
@@ -25,9 +25,9 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlist = Bucketlist.find_by(id: params[:id])
 
     if bucketlist && bucketlist.is_user_bucket?(current_user)
-      render json: bucketlist
+      render json: bucketlist, status: 200
     else
-      render json: { error: "no bucket found" }
+      render json: { error: "no bucket found" }, status: 404
     end
   end
 
@@ -37,9 +37,9 @@ class Api::V1::BucketlistsController < ApplicationController
     if bucketlist && bucketlist.user == current_user
       bucketlist.update(bucketlist_params)
       bucketlist.save
-      render json: { message: "succesfully updated" }
+      render json: { message: "succesfully updated" }, status: 201
     else
-      render json: { error: "could not update bucketlist" }
+      render json: { error: "could not update bucketlist" }, status: 403
     end
   end
 
@@ -48,9 +48,9 @@ class Api::V1::BucketlistsController < ApplicationController
 
     if bucketlist && bucketlist.user == current_user
       bucketlist.destroy
-      render json: { message: "bucket have been destroyed" }
+      render json: { message: "bucket have been destroyed" }, status: 200
     else
-      render json: { error: "bucket was not destroyed" }
+      render json: { error: "bucket was not destroyed" }, status: 403
     end
   end
 
