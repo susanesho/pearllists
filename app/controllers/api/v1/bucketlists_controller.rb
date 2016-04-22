@@ -12,10 +12,10 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def index
-    bucketlists = current_user.bucketlists
+    bucketlists = (current_user.bucketlists).search(params[:q])
 
     if bucketlists.empty?
-      render json: { error: "no bucket have been created" }, status: 404
+      render json: { error: "no buckets found" }, status: 404
     else
       render json: bucketlists, status: 200
     end
@@ -24,7 +24,7 @@ class Api::V1::BucketlistsController < ApplicationController
   def show
     bucketlist = Bucketlist.find_by(id: params[:id])
 
-    if bucketlist && bucketlist.is_user_bucket?(current_user)
+    if bucketlist && bucketlist.user_bucket?(current_user)
       render json: bucketlist, status: 200
     else
       render json: { error: "no bucket found" }, status: 404
@@ -34,7 +34,7 @@ class Api::V1::BucketlistsController < ApplicationController
   def update
     bucketlist = Bucketlist.find_by(id: params[:id])
 
-    if bucketlist && bucketlist.user == current_user
+    if bucketlist && bucketlist.user_bucket?(current_user)
       bucketlist.update(bucketlist_params)
       bucketlist.save
       render json: { message: "succesfully updated" }, status: 201

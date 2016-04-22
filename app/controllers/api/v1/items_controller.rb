@@ -49,7 +49,7 @@ class Api::V1::ItemsController < ApplicationController
     bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])
 
     if bucketlist
-      bucketlist.is_user_bucket?(current_user)
+      bucketlist.user_bucket?(current_user)
     end
   end
 
