@@ -4,13 +4,13 @@ class Bucketlist < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   def user_bucket?(user)
-   self.user == user
+    self.user == user
   end
 
   scope(
     :search, lambda do |q|
       unless q.nil?
-        where("name LIKE ?", "%#{q}%" )
+        where("name LIKE ?", "%#{q}%")
       end
     end
   )
