@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   attr_reader :current_user
 
   def authenticate
-    if decoded_auth_token
+    if decoded_auth_token && valid_token
       @current_user ||= User.find_by(id: decoded_auth_token["user_id"])
     else
       render json: { error: "unauthorized access" }
@@ -17,5 +17,9 @@ class ApplicationController < ActionController::API
     if request.headers["Authorization"].present?
       request.headers["Authorization"].split(" ").last
     end
+  end
+
+  def valid_token
+    Token.find_by(token: auth_token)
   end
 end
