@@ -11,4 +11,5 @@ gem "rspec-rails"
 gem "byebug"
 gem "bcrypt"
 gem "jwt"
+gem "active_model_serializers"
 gem "codeclimate-test-reporter", group: :test, require: nil
