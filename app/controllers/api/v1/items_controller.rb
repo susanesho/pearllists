@@ -3,7 +3,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-     bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])
+    bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])
 
     if check_bucketlist
       item.bucketlist_id = bucketlist.id
@@ -19,7 +19,6 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
-
   def update
     item = Item.find_by(id: params[:id])
 
@@ -29,7 +28,6 @@ class Api::V1::ItemsController < ApplicationController
     else
       render json: { error: "cannot update item" }, status: 403
     end
-
   end
 
   def destroy
@@ -37,7 +35,7 @@ class Api::V1::ItemsController < ApplicationController
 
     if item && check_bucketlist
       item.destroy
-      render json: { message: "item have been successfully destroyed" }, status: 200
+      render json: { message: "item destroyed" }, status: 200
     else
       render json: { error: "cannot destroy item" }, status: 403
     end

@@ -6,10 +6,17 @@ gem "rails-api"
 
 gem "spring", group: :development
 
-gem "sqlite3"
+
 gem "rspec-rails"
-gem "byebug"
 gem "bcrypt"
 gem "jwt"
 gem "active_model_serializers"
 gem "codeclimate-test-reporter", group: :test, require: nil
+group :development, :test do
+  gem "sqlite3"
+  gem "byebug"
+  gem "pry-rails"
+end
+gem "pg", group: :production
+
+

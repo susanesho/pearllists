@@ -5,7 +5,6 @@ class CreateItems < ActiveRecord::Migration
       t.string  :bucketlist_id
       t.boolean :done, default: false
 
-
       t.timestamps null: false
     end
   end
