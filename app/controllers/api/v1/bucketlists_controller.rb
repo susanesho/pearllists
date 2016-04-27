@@ -12,7 +12,7 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def index
-    bucketlists = (current_user.bucketlists).search(params[:q])
+    bucketlists = (current_user.bucketlists).search(params[:q]).paginate(params)
 
     if bucketlists.empty?
       render json: { error: "no buckets found" }, status: 404
