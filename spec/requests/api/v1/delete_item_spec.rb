@@ -10,39 +10,39 @@ RSpec.describe "Create Bucketlist", type: :request do
     Bucketlist.destroy_all
   end
 
-  describe "put /bucketlists/:id/items/:id" do
-    context "when bucketlist items exists for user" do
-      it "edits a single bucketlist item" do
+  describe "destroy /bucketlists/:id/items/:id" do
+    context "when a single item is destroyed" do
+      it "destroys a single item" do
         create_bucketlist(@user, @token, 1)
         create_item(@user, @token, 1)
         bucketlist = Bucketlist.last
         item = Item.last
 
-        put(
+        delete(
           "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
           { name: "buck" },
           HTTP_AUTHORIZATION: @token
         )
 
         json_response = JSON.parse(response.body)
-        expect(json_response["item"]["name"]).to eq "buck"
-        expect(response).to have_http_status(201)
+        expect(json_response["message"]).to eq "item destroyed"
+        expect(response).to have_http_status(200)
       end
 
-      context "when item does not exists for user" do
-        it "cannot edits an item not created or found" do
+      context "when a single item cannot be destroyed" do
+        it "destroys an item that does not belong to the user" do
           create_bucketlist(@user, @token, 1)
           create_item(@user, @token, 1)
           item = Item.last
 
-          put(
+          delete(
             "/api/v1/bucketlists/2000/items/#{item.id}",
             { name: "buck" },
             HTTP_AUTHORIZATION: @token
           )
 
           json_response = JSON.parse(response.body)
-          expect(json_response["error"]).to eq "cannot update item"
+          expect(json_response["error"]).to eq "cannot destroy item"
           expect(response).to have_http_status(403)
         end
       end

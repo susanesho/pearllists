@@ -6,8 +6,7 @@ module ApiHelpers
     json_response["token"]
   end
 
-    def create_bucketlist(user, token, n=10)
-
+  def create_bucketlist(_user, token, n = 10)
     n.times do
       post(
         "/api/v1/bucketlists",
@@ -18,9 +17,7 @@ module ApiHelpers
     @bucketlist = Bucketlist.last
   end
 
-
-  def create_item(user, token, n=1)
-
+  def create_item(_user, token, n = 1)
     n.times do
       post(
         "/api/v1/bucketlists/#{@bucketlist.id}/items",
