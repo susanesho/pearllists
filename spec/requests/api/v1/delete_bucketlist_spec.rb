@@ -1,6 +1,5 @@
 require "rails_helper"
 RSpec.describe "Edit Bucketlist", type: :request do
-
   before(:all) do
     @user = create(:user)
     @token = set_login(@user)
@@ -16,7 +15,11 @@ RSpec.describe "Edit Bucketlist", type: :request do
       it "deletes a single bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
-        delete("/api/v1/bucketlists/#{bucketlist.id}", nil, HTTP_AUTHORIZATION: @token)
+        delete(
+          "/api/v1/bucketlists/#{bucketlist.id}",
+          nil,
+          HTTP_AUTHORIZATION: @token
+        )
         json_response = JSON.parse(response.body)
         expect(json_response["message"]).to eq "bucket have been destroyed"
         expect(Bucketlist.count).to eq 0
