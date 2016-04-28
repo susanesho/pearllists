@@ -6,10 +6,24 @@ module ApiHelpers
     json_response["token"]
   end
 
-  def create_bucketlist(_user, token, n = 10)
+    def create_bucketlist(user, token, n=10)
+
     n.times do
       post(
         "/api/v1/bucketlists",
+        { name: Faker::Company.buzzword },
+        HTTP_AUTHORIZATION: token
+      )
+    end
+    @bucketlist = Bucketlist.last
+  end
+
+
+  def create_item(user, token, n=1)
+
+    n.times do
+      post(
+        "/api/v1/bucketlists/#{@bucketlist.id}/items",
         { name: Faker::Company.buzzword },
         HTTP_AUTHORIZATION: token
       )
