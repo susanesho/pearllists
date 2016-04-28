@@ -37,7 +37,7 @@ class Api::V1::BucketlistsController < ApplicationController
     if bucketlist && bucketlist.user_bucket?(current_user)
       bucketlist.update(bucketlist_params)
       bucketlist.save
-      render json: { message: "succesfully updated" }, status: 201
+      render json: { message: "successfully updated" }, status: 201
     else
       render json: { error: "could not update bucketlist" }, status: 403
     end
