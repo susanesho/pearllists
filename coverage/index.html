@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.0/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.0/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_yellow.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_green.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.0/favicon.png" />
   </head>
   
@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-28T17:10:47+01:00">2016-04-28T17:10:47+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-28T18:05:05+01:00">2016-04-28T18:05:05+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">89.97%</span></span>
+    (<span class="covered_percent"><span class="green">94.27%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.59
+         3.26
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>24</b> files in total.
-    <b>309</b> relevant lines. 
-    <span class="green"><b>278</b> lines covered</span> and
-    <span class="red"><b>31</b> lines missed </span>
+    <b>26</b> files in total.
+    <b>349</b> relevant lines. 
+    <span class="green"><b>329</b> lines covered</span> and
+    <span class="red"><b>20</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -57,17 +57,17 @@
         <td>34</td>
         <td>34</td>
         <td>0</td>
-        <td>3.7</td>
+        <td>5.5</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#650e111898482711b43f71c9eeefe3344ccb6c11" class="src_link" title="app/controllers/api/v1/items_controller.rb">app/controllers/api/v1/items_controller.rb</a></td>
-        <td class="red strong">26.67 %</td>
+        <td class="red strong">66.67 %</td>
         <td>57</td>
         <td>30</td>
-        <td>8</td>
-        <td>22</td>
-        <td>0.3</td>
+        <td>20</td>
+        <td>10</td>
+        <td>1.2</td>
       </tr>
       
       <tr>
@@ -77,7 +77,7 @@
         <td>13</td>
         <td>13</td>
         <td>0</td>
-        <td>3.1</td>
+        <td>3.5</td>
       </tr>
       
       <tr>
@@ -97,7 +97,7 @@
         <td>14</td>
         <td>14</td>
         <td>0</td>
-        <td>18.1</td>
+        <td>27.8</td>
       </tr>
       
       <tr>
@@ -107,7 +107,7 @@
         <td>8</td>
         <td>8</td>
         <td>0</td>
-        <td>8.9</td>
+        <td>12.9</td>
       </tr>
       
       <tr>
@@ -117,7 +117,7 @@
         <td>18</td>
         <td>14</td>
         <td>4</td>
-        <td>1.2</td>
+        <td>1.3</td>
       </tr>
       
       <tr>
@@ -147,7 +147,7 @@
         <td>8</td>
         <td>8</td>
         <td>0</td>
-        <td>2.3</td>
+        <td>2.5</td>
       </tr>
       
       <tr>
@@ -157,7 +157,17 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>10.0</td>
+        <td>14.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#5f4ca8aea6830289342e4519b4e6d24d940b595e" class="src_link" title="app/serializers/item_serializer.rb">app/serializers/item_serializer.rb</a></td>
+        <td class="yellow strong">87.5 %</td>
+        <td>15</td>
+        <td>8</td>
+        <td>7</td>
+        <td>1</td>
+        <td>0.9</td>
       </tr>
       
       <tr>
@@ -246,6 +256,16 @@
         <td>43</td>
         <td>22</td>
         <td>22</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#e5eaa2859a4026268df9bec89e1bfa655e9471c2" class="src_link" title="spec/requests/api/v1/create_items_spec.rb">spec/requests/api/v1/create_items_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>59</td>
+        <td>32</td>
+        <td>32</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -344,26 +364,26 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="5">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="30" data-linenumber="5">
+          <span class="hits">30</span>
           
           <code class="ruby">    bucketlist = Bucketlist.new(bucketlist_params)</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="6">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="30" data-linenumber="6">
+          <span class="hits">30</span>
           
           <code class="ruby">    bucketlist.user_id = current_user.id</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="7">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="30" data-linenumber="7">
+          <span class="hits">30</span>
           
           <code class="ruby">    if bucketlist.save</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="8">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="29" data-linenumber="8">
+          <span class="hits">29</span>
           
           <code class="ruby">      render json: bucketlist, status: 200</code>
         </li>
@@ -674,8 +694,8 @@
           <code class="ruby">  def bucketlist_params</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="60">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="31" data-linenumber="60">
+          <span class="hits">31</span>
           
           <code class="ruby">    params.permit(:name)</code>
         </li>
@@ -699,11 +719,11 @@
         <div class="source_table" id="650e111898482711b43f71c9eeefe3344ccb6c11">
   <div class="header">
     <h3>app/controllers/api/v1/items_controller.rb</h3>
-    <h4><span class="red">26.67 %</span> covered</h4>
+    <h4><span class="red">66.67 %</span> covered</h4>
     <div>
       <b>30</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>22</b> lines missed.</span>
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>10</b> lines missed.</span>
     </div>
   </div>
   
@@ -734,14 +754,14 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="5">
-          
+        <li class="covered" data-hits="3" data-linenumber="5">
+          <span class="hits">3</span>
           
           <code class="ruby">    item = Item.new(item_params)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="6">
-          
+        <li class="covered" data-hits="3" data-linenumber="6">
+          <span class="hits">3</span>
           
           <code class="ruby">    bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])</code>
         </li>
@@ -752,14 +772,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="8">
-          
+        <li class="covered" data-hits="3" data-linenumber="8">
+          <span class="hits">3</span>
           
           <code class="ruby">    if check_bucketlist</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="9">
-          
+        <li class="covered" data-hits="2" data-linenumber="9">
+          <span class="hits">2</span>
           
           <code class="ruby">      item.bucketlist_id = bucketlist.id</code>
         </li>
@@ -770,14 +790,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="11">
-          
+        <li class="covered" data-hits="2" data-linenumber="11">
+          <span class="hits">2</span>
           
           <code class="ruby">      if item.save</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="12">
-          
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
           
           <code class="ruby">        render json: item, status: 200</code>
         </li>
@@ -788,8 +808,8 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
           
           <code class="ruby">        render json: item.errors, status: 422</code>
         </li>
@@ -812,8 +832,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="18">
-          
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
           
           <code class="ruby">      render json: { error: &quot;bucket item cannot be created&quot; }, status: 403</code>
         </li>
@@ -986,8 +1006,8 @@
           <code class="ruby">  def check_bucketlist</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="47">
-          
+        <li class="covered" data-hits="3" data-linenumber="47">
+          <span class="hits">3</span>
           
           <code class="ruby">    bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])</code>
         </li>
@@ -998,14 +1018,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="49">
-          
+        <li class="covered" data-hits="3" data-linenumber="49">
+          <span class="hits">3</span>
           
           <code class="ruby">    if bucketlist</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
-          
+        <li class="covered" data-hits="2" data-linenumber="50">
+          <span class="hits">2</span>
           
           <code class="ruby">      bucketlist.user_bucket?(current_user)</code>
         </li>
@@ -1034,8 +1054,8 @@
           <code class="ruby">  def item_params</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
+        <li class="covered" data-hits="3" data-linenumber="55">
+          <span class="hits">3</span>
           
           <code class="ruby">    params.permit(:name, :done)</code>
         </li>
@@ -1094,8 +1114,8 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="5">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="5">
+          <span class="hits">8</span>
           
           <code class="ruby">    user = User.find_by(email: params[:email])</code>
         </li>
@@ -1106,26 +1126,26 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="7">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="7">
+          <span class="hits">8</span>
           
           <code class="ruby">    if user &amp;&amp; user.authenticate(params[:password])</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="8">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="8">
+          <span class="hits">7</span>
           
           <code class="ruby">      token = user.generate_auth_token</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="9">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="9">
+          <span class="hits">7</span>
           
           <code class="ruby">      Token.create(token: token, user_id: user.id)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="10">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="10">
+          <span class="hits">7</span>
           
           <code class="ruby">      render(</code>
         </li>
@@ -1376,14 +1396,14 @@
           <code class="ruby">  def authenticate</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="6">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="43" data-linenumber="6">
+          <span class="hits">43</span>
           
           <code class="ruby">    if decoded_auth_token &amp;&amp; valid_token</code>
         </li>
       
-        <li class="covered" data-hits="27" data-linenumber="7">
-          <span class="hits">27</span>
+        <li class="covered" data-hits="42" data-linenumber="7">
+          <span class="hits">42</span>
           
           <code class="ruby">      @current_user ||= User.find_by(id: decoded_auth_token[&quot;user_id&quot;])</code>
         </li>
@@ -1424,8 +1444,8 @@
           <code class="ruby">  def decoded_auth_token</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="14">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="85" data-linenumber="14">
+          <span class="hits">85</span>
           
           <code class="ruby">    @decoded_auth_token ||= AuthToken.decode(auth_token)</code>
         </li>
@@ -1448,14 +1468,14 @@
           <code class="ruby">  def auth_token</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="18">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="85" data-linenumber="18">
+          <span class="hits">85</span>
           
           <code class="ruby">    if request.headers[&quot;Authorization&quot;].present?</code>
         </li>
       
-        <li class="covered" data-hits="54" data-linenumber="19">
-          <span class="hits">54</span>
+        <li class="covered" data-hits="84" data-linenumber="19">
+          <span class="hits">84</span>
           
           <code class="ruby">      request.headers[&quot;Authorization&quot;].split(&quot; &quot;).last</code>
         </li>
@@ -1484,8 +1504,8 @@
           <code class="ruby">  def valid_token</code>
         </li>
       
-        <li class="covered" data-hits="27" data-linenumber="24">
-          <span class="hits">27</span>
+        <li class="covered" data-hits="42" data-linenumber="24">
+          <span class="hits">42</span>
           
           <code class="ruby">    Token.find_by(token: auth_token)</code>
         </li>
@@ -1532,14 +1552,14 @@
           <code class="ruby">  def self.encode(payload, exp = 24.hours.from_now)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="3">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="3">
+          <span class="hits">7</span>
           
           <code class="ruby">    payload[:exp] = exp.to_i</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="4">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="4">
+          <span class="hits">7</span>
           
           <code class="ruby">    JWT.encode(payload, Rails.application.secrets.secret_key_base)</code>
         </li>
@@ -1562,14 +1582,14 @@
           <code class="ruby">  def self.decode(token)</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="8">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="43" data-linenumber="8">
+          <span class="hits">43</span>
           
           <code class="ruby">    payload = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]</code>
         </li>
       
-        <li class="covered" data-hits="27" data-linenumber="9">
-          <span class="hits">27</span>
+        <li class="covered" data-hits="42" data-linenumber="9">
+          <span class="hits">42</span>
           
           <code class="ruby">    payload</code>
         </li>
@@ -1682,8 +1702,8 @@
           <code class="ruby">  def user_bucket?(user)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="7">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
           <code class="ruby">    self.user == user</code>
         </li>
@@ -2000,14 +2020,14 @@
           <code class="ruby">  def generate_auth_token</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="9">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="9">
+          <span class="hits">7</span>
           
           <code class="ruby">    payload = { user_id: id }</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="10">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="10">
+          <span class="hits">7</span>
           
           <code class="ruby">    AuthToken.encode(payload)</code>
         </li>
@@ -2072,8 +2092,8 @@
           <code class="ruby">  def date_created</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="6">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="40" data-linenumber="6">
+          <span class="hits">40</span>
           
           <code class="ruby">    object.created_at.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code>
         </li>
@@ -2096,8 +2116,8 @@
           <code class="ruby">  def date_modified</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="10">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="40" data-linenumber="10">
+          <span class="hits">40</span>
           
           <code class="ruby">    object.updated_at.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code>
         </li>
@@ -2120,8 +2140,8 @@
           <code class="ruby">  def created_by</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="14">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="40" data-linenumber="14">
+          <span class="hits">40</span>
           
           <code class="ruby">    object.user.id</code>
         </li>
@@ -2133,6 +2153,114 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="5f4ca8aea6830289342e4519b4e6d24d940b595e">
+  <div class="header">
+    <h3>app/serializers/item_serializer.rb</h3>
+    <h4><span class="yellow">87.5 %</span> covered</h4>
+    <div>
+      <b>8</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class ItemSerializer &lt; ActiveModel::Serializer</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  attributes :id, :name, :date_created, :date_modified, :done</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def date_created</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    object.created_at.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def date_modified</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    object.updated_at.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def created_by</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
+          
+          <code class="ruby">    object.user.id</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">end</code>
@@ -2739,6 +2867,378 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="e5eaa2859a4026268df9bec89e1bfa655e9471c2">
+  <div class="header">
+    <h3>spec/requests/api/v1/create_items_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>32</b> relevant lines. 
+      <span class="green"><b>32</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &quot;rails_helper&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">RSpec.describe &quot;Create Bucketlist&quot;, type: :request do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  before(:all) do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @user = create(:user)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @token = set_login(@user)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  after(:all) do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    User.destroy_all</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    Bucketlist.destroy_all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &quot;Post /items&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    context &quot;valid params&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      it &quot;creates an item&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      create_bucketlist(@user, @token, 10)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      bucketlist = Bucketlist.last</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        post(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">          &quot;/api/v1/bucketlists/#{bucketlist.id}/items&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">          { name: &quot;mynames&quot; },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">          HTTP_AUTHORIZATION: @token</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">        )</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        json_response = JSON.parse(response.body)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to have_http_status(200)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(json_response[&quot;item&quot;][&quot;name&quot;]).to eq &quot;mynames&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    context &quot;when a user creates an item without a name&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      it &quot;renders error&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        create_bucketlist(@user, @token, 1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        bucketlist = Bucketlist.last</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="36">
+          <span class="hits">1</span>
+          
+          <code class="ruby">          post(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">            &quot;/api/v1/bucketlists/#{bucketlist.id}/items&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">            { name: &quot;&quot; },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">            HTTP_AUTHORIZATION: @token</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">          )</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
+          
+          <code class="ruby">          json_response = JSON.parse(response.body)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="43">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to have_http_status(422)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(json_response[&quot;name&quot;]).to eq [&quot;can&#39;t be blank&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="45">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
+          <code class="ruby">     context &quot;when a user tries to create an item for an un-exisiting bucketlist&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      it &quot;renders error&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        create_bucketlist(@user, @token, 1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        post(&quot;/api/v1/bucketlists/2000/items&quot;, nil, HTTP_AUTHORIZATION: @token)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        json_response = JSON.parse(response.body)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to have_http_status(403)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(json_response[&quot;error&quot;]).to eq &quot;bucket item cannot be created&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">end</code>
