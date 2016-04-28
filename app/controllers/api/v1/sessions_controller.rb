@@ -7,7 +7,10 @@ class Api::V1::SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       token = user.generate_auth_token
       Token.create(token: token, user_id: user.id)
-      render json: { token: token }, status: 200
+      render(
+        json: { message: "logged in successfully", token: token },
+        status: 200
+      )
     else
       render json: { error: "user not found" }, status: 403
     end

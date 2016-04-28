@@ -1,6 +1,5 @@
 require "rails_helper"
 RSpec.describe "Get Bucketlist", type: :request do
-
   before(:all) do
     @user = create(:user)
     @token = set_login(@user)
@@ -40,7 +39,12 @@ RSpec.describe "Get Bucketlist", type: :request do
       it "gets a single bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
-        get("/api/v1/bucketlists/#{bucketlist.id}", nil, HTTP_AUTHORIZATION: @token)
+        get(
+          "/api/v1/bucketlists/#{bucketlist.id}",
+          nil,
+          HTTP_AUTHORIZATION: @token
+        )
+
         json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(200)
