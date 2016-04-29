@@ -42,6 +42,24 @@ RSpec.describe "Create Bucketlist", type: :request do
           )
 
           json_response = JSON.parse(response.body)
+          expect(json_response["error"]).to eq "Unauthorized"
+          expect(response).to have_http_status(403)
+        end
+      end
+
+      context "when a single item does not exist" do
+        it "throws an error" do
+          create_bucketlist(@user, @token, 1)
+          create_item(@user, @token, 1)
+          bucketlist = Bucketlist.last
+
+          delete(
+            "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
+            { name: "buck" },
+            HTTP_AUTHORIZATION: @token
+          )
+
+          json_response = JSON.parse(response.body)
           expect(json_response["error"]).to eq "cannot destroy item"
           expect(response).to have_http_status(403)
         end

@@ -1,7 +1,9 @@
-require "simplecov"
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+# require "simplecov"
 require "support/api_helpers"
 require "factory_girl_rails"
-SimpleCov.start
+# SimpleCov.start
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

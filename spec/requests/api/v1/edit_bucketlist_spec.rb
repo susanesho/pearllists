@@ -21,7 +21,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
           HTTP_AUTHORIZATION: @token
         )
         json_response = JSON.parse(response.body)
-        expect(json_response["message"]).to eq "successfully updated"
+        expect(json_response["bucketlist"]["name"]).to eq "bucket3"
         expect(response).to have_http_status(201)
       end
     end
