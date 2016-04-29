@@ -48,11 +48,16 @@ RSpec.describe "Create Bucketlist", type: :request do
     context "when a bucketlist id does not exist or belong to user" do
       it "renders error" do
         create_bucketlist(@user, @token, 1)
-        post("/api/v1/bucketlists/2000/items", nil, HTTP_AUTHORIZATION: @token)
+        bucketlist = Bucketlist.last
+        post(
+          "/api/v1/bucketlists/#{bucketlist.id}/items",
+          nil,
+          HTTP_AUTHORIZATION: @token
+        )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(403)
-        expect(json_response["error"]).to eq "bucket item cannot be created"
+        expect(response).to have_http_status(422)
+        expect(json_response["name"]).to eq ["can't be blank"]
       end
     end
   end

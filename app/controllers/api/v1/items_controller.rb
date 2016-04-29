@@ -1,28 +1,24 @@
 class Api::V1::ItemsController < ApplicationController
   before_action :authenticate
+  before_action :check_bucketlist, only: [:create, :update, :destroy]
 
   def create
     item = Item.new(item_params)
     bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])
 
-    if check_bucketlist
-      item.bucketlist_id = bucketlist.id
+    item.bucketlist_id = bucketlist.id
 
-      if item.save
-        render json: item, status: 200
-      else
-        render json: item.errors, status: 422
-      end
-
+    if item.save
+      render json: item, status: 200
     else
-      render json: { error: "bucket item cannot be created" }, status: 403
+      render json: item.errors, status: 422
     end
   end
 
   def update
     item = Item.find_by(id: params[:id])
 
-    if item && check_bucketlist
+    if item
       item.update(item_params)
       render json: item, status: 201
     else
@@ -33,7 +29,7 @@ class Api::V1::ItemsController < ApplicationController
   def destroy
     item = Item.find_by(id: params[:id])
 
-    if item && check_bucketlist
+    if item
       item.destroy
       render json: { message: "item destroyed" }, status: 200
     else
@@ -46,8 +42,8 @@ class Api::V1::ItemsController < ApplicationController
   def check_bucketlist
     bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])
 
-    if bucketlist
-      bucketlist.user_bucket?(current_user)
+    unless bucketlist && bucketlist.user_bucket?(current_user)
+      render json: { error: "Unauthorized" }, status: 403
     end
   end
 
