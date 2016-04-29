@@ -13,7 +13,7 @@ RSpec.describe "Search by params key", type: :request do
   describe "Post /bucketlist" do
     context "search params" do
       it "gets search result" do
-        create_bucketlist(@user, @token, 10)
+        create_bucketlist(@user, @token, 5)
 
         get(
           "/api/v1/bucketlists/?q=",
@@ -23,7 +23,7 @@ RSpec.describe "Search by params key", type: :request do
         json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(200)
-        expect(json_response["bucketlists"].length).to eq 10
+        expect(json_response["bucketlists"].length).to eq 5
       end
     end
 
