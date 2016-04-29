@@ -33,10 +33,10 @@ RSpec.describe "Create Bucketlist", type: :request do
         it "cannot edits an item not created or found" do
           create_bucketlist(@user, @token, 1)
           create_item(@user, @token, 1)
-          item = Item.last
+          bucketlist = Bucketlist.last
 
           put(
-            "/api/v1/bucketlists/2000/items/#{item.id}",
+            "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
             { name: "buck" },
             HTTP_AUTHORIZATION: @token
           )
