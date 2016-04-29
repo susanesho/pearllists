@@ -13,10 +13,9 @@ RSpec.describe "Create Bucketlist", type: :request do
       it "creates new users" do
         post(
           "/api/v1/users/",
-          { name: "tayelolu",
-            email: "tayelolu@gmail.com",
-            password: "tayeloluejire345"
-          }
+          name: "tayelolu",
+          email: "tayelolu@gmail.com",
+          password: "tayeloluejire345"
         )
         json_response = JSON.parse(response.body)
 
@@ -29,10 +28,9 @@ RSpec.describe "Create Bucketlist", type: :request do
       it "creates a user" do
         post(
           "/api/v1/users/",
-          { name: "tayelolu",
-            email: "",
-            password: "tayeloluejire345"
-          }
+          name: "tayelolu",
+          email: "",
+          password: "tayeloluejire345"
         )
         json_response = JSON.parse(response.body)
 
