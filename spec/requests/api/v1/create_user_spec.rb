@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Create Bucketlist", type: :request do
+RSpec.describe "Create User", type: :request do
   before(:all) do
     @user = create(:user)
   end
