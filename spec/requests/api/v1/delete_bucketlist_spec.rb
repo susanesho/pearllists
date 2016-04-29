@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Edit Bucketlist", type: :request do
+RSpec.describe "Delete Bucketlist", type: :request do
   before(:all) do
     @user = create(:user)
     @token = set_login(@user)

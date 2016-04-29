@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Create Item", type: :request do
+RSpec.describe "Create Items", type: :request do
   before(:all) do
     @user = create(:user)
     @token = set_login(@user)

@@ -11,17 +11,10 @@
         1,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        55,
-        55,
-        55,
-        53,
-=======
         50,
         50,
         50,
         49,
->>>>>>> feat (readme doc) document read me
         null,
         1,
         null,
@@ -73,11 +66,7 @@
         1,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        56,
-=======
         51,
->>>>>>> feat (readme doc) document read me
         null,
         null
       ],
@@ -87,43 +76,25 @@
         1,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        80,
-        79,
-=======
         75,
         74,
->>>>>>> feat (readme doc) document read me
         null,
         1,
         null,
         null,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        159,
-        null,
-        null,
-        1,
-        159,
-        158,
-=======
         149,
         null,
         null,
         1,
         149,
         148,
->>>>>>> feat (readme doc) document read me
         null,
         null,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        79,
-=======
         74,
->>>>>>> feat (readme doc) document read me
         null,
         null
       ],
@@ -257,7 +228,7 @@
         1,
         null,
         1,
-        14,
+        15,
         null,
         null,
         1,
@@ -878,13 +849,8 @@
         null,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        80,
-        79,
-=======
         75,
         74,
->>>>>>> feat (readme doc) document read me
         null,
         1,
         null,
@@ -896,17 +862,6 @@
         1,
         null,
         1,
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-        76,
-        null,
-        null,
-        1,
-        76,
-        null,
-        null,
-        1,
-        76,
-=======
         68,
         null,
         null,
@@ -916,7 +871,6 @@
         null,
         1,
         68,
->>>>>>> feat (readme doc) document read me
         null,
         null
       ],
@@ -934,14 +888,6 @@
         null
       ]
     },
-<<<<<<< 414ac4fbb54ff2bd8436b02c9a3ca8ec824b7e62
-<<<<<<< cab55091e5fe23a13bdf8461b9585f5b58b24f68
-    "timestamp": 1461900306
-=======
-    "timestamp": 1461902423
->>>>>>> feat (readme doc) document read me
-=======
-    "timestamp": 1461903123
->>>>>>> changed files
+    "timestamp": 1461905484
   }
 }
