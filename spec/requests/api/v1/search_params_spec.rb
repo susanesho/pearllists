@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Search by params key", type: :request do
+RSpec.describe "Search Bucketlist", type: :request do
   before(:all) do
     @user = create(:user)
     @token = set_login(@user)

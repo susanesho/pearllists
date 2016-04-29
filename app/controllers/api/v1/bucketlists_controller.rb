@@ -46,7 +46,7 @@ class Api::V1::BucketlistsController < ApplicationController
   def destroy
     bucketlist = Bucketlist.find_by(id: params[:id])
 
-    if bucketlist && bucketlist.user == current_user
+    if bucketlist && bucketlist.user_bucket?(current_user)
       bucketlist.destroy
       render json: { message: "bucket have been destroyed" }, status: 200
     else

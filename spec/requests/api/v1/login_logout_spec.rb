@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Get Bucketlist", type: :request do
+RSpec.describe "Login/Logout Users", type: :request do
   before(:all) do
     @user = create(:user)
     @token = set_login(@user)
