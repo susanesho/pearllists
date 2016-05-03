@@ -49,7 +49,7 @@ class Api::V1::BucketlistsController < ApplicationController
       bucketlist.destroy
       render json: { message: "bucket have been destroyed" }, status: 200
     else
-      render json: { error: "bucket was not destroyed" }, status: 403
+      render json: { error: "bucket does not exist" }, status: 403
     end
   end
 

@@ -8,7 +8,10 @@ class Api::V1::SessionsController < ApplicationController
       token = user.generate_auth_token
       Token.create(token: token, user_id: user.id)
       render(
-        json: { message: "logged in successfully", token: token },
+        json: {
+          message: "logged in successfully",
+          token: token
+        },
         status: 200
       )
     else
