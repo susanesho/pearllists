@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-29T05:51:24+01:00">2016-04-29T05:51:24+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-05-03T11:41:16+01:00">2016-05-03T11:41:16+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.24
+         4.22
        </span>
     </span> hits/line)
   </h2>
@@ -157,7 +157,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>23.3</td>
+        <td>22.7</td>
       </tr>
       
       <tr>
@@ -422,8 +422,8 @@
           <code class="ruby">    if bucketlist.save</code>
         </li>
       
-        <li class="covered" data-hits="49" data-linenumber="8">
-          <span class="hits">49</span>
+        <li class="covered" data-hits="47" data-linenumber="8">
+          <span class="hits">47</span>
           
           <code class="ruby">      render json: bucketlist, status: 200</code>
         </li>
@@ -434,8 +434,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="10">
+          <span class="hits">3</span>
           
           <code class="ruby">      render json:  bucketlist.errors, status: 422</code>
         </li>
@@ -629,7 +629,7 @@
         <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
-          <code class="ruby">      render json: { error: &quot;could not update bucketlist&quot; }, status: 403</code>
+          <code class="ruby">      render json: { error: &quot;bucketlist does not exist&quot; }, status: 403</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
@@ -2078,8 +2078,8 @@
           <code class="ruby">  def date_created</code>
         </li>
       
-        <li class="covered" data-hits="68" data-linenumber="6">
-          <span class="hits">68</span>
+        <li class="covered" data-hits="66" data-linenumber="6">
+          <span class="hits">66</span>
           
           <code class="ruby">    object.created_at.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code>
         </li>
@@ -2102,8 +2102,8 @@
           <code class="ruby">  def date_modified</code>
         </li>
       
-        <li class="covered" data-hits="68" data-linenumber="10">
-          <span class="hits">68</span>
+        <li class="covered" data-hits="66" data-linenumber="10">
+          <span class="hits">66</span>
           
           <code class="ruby">    object.updated_at.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code>
         </li>
@@ -2126,8 +2126,8 @@
           <code class="ruby">  def created_by</code>
         </li>
       
-        <li class="covered" data-hits="68" data-linenumber="14">
-          <span class="hits">68</span>
+        <li class="covered" data-hits="66" data-linenumber="14">
+          <span class="hits">66</span>
           
           <code class="ruby">    object.user.id</code>
         </li>
@@ -4445,7 +4445,7 @@
         <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(json_response[&quot;error&quot;]).to eq &quot;could not update bucketlist&quot;</code>
+          <code class="ruby">        expect(json_response[&quot;error&quot;]).to eq &quot;bucketlist does not exist&quot;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="39">
