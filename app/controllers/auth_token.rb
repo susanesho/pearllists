@@ -6,7 +6,7 @@ class AuthToken
   end
 
   def self.decode(token)
-    payload = JWT.decode(token, SECRET, algorithm: "HS256")[0]
+    payload = JWT.decode(token, SECRET, true, algorithm: "HS256")[0]
     payload
   rescue
     nil
