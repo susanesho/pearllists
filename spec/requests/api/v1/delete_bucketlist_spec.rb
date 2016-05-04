@@ -32,7 +32,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
         create_bucketlist(@user, @token, 1)
         delete("/api/v1/bucketlists/2000", nil, HTTP_AUTHORIZATION: @token)
         json_response = JSON.parse(response.body)
-        expect(json_response["error"]).to eq "bucket was not destroyed"
+        expect(json_response["error"]).to eq "bucket does not exist"
         expect(Bucketlist.count).to eq 1
         expect(response).to have_http_status(403)
       end

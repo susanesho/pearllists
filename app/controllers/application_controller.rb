@@ -23,4 +23,8 @@ class ApplicationController < ActionController::API
   def valid_token
     Token.find_by(token: auth_token)
   end
+
+   def no_route_found
+    render json: { error: "Invalid address specify a valid endpoint!" }, status: 404
+  end
 end

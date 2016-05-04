@@ -17,4 +17,5 @@ Rails.application.routes.draw do
       end
     end
   end
+  get "*unmatched_route", to: "application#no_route_found"
 end

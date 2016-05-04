@@ -42,7 +42,7 @@ RSpec.describe "Edit Items", type: :request do
           )
 
           json_response = JSON.parse(response.body)
-          expect(json_response["error"]).to eq "cannot update item"
+          expect(json_response["error"]).to eq "item does not exist"
           expect(response).to have_http_status(403)
         end
       end
