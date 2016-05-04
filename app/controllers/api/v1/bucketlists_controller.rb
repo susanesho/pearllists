@@ -22,9 +22,9 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def show
-    bucketlist = Bucketlist.find_by(id: params[:id])
+    bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
-    if bucketlist && bucketlist.user_bucket?(current_user)
+    if bucketlist
       render json: bucketlist, status: 200
     else
       render json: { error: "no bucket found" }, status: 404
@@ -32,9 +32,9 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def update
-    bucketlist = Bucketlist.find_by(id: params[:id])
+    bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
-    if bucketlist && bucketlist.user_bucket?(current_user)
+    if bucketlist
       bucketlist.update(bucketlist_params)
       render json: bucketlist, status: 201
     else
@@ -43,9 +43,9 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def destroy
-    bucketlist = Bucketlist.find_by(id: params[:id])
+    bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
-    if bucketlist && bucketlist.user_bucket?(current_user)
+    if bucketlist
       bucketlist.destroy
       render json: { message: "bucket have been destroyed" }, status: 200
     else
