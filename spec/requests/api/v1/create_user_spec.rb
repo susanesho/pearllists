@@ -34,7 +34,7 @@ RSpec.describe "Create User", type: :request do
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(400)
         expect(json_response["email"]).to eq ["can't be blank"]
       end
     end
