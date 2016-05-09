@@ -26,8 +26,23 @@ RSpec.describe "Edit Bucketlist", type: :request do
       end
     end
 
+    context "when updating with invalid parameters" do
+      it "does not update bucketlist" do
+        create_bucketlist(@user, @token, 1)
+        bucketlist = Bucketlist.last
+        put(
+          "/api/v1/bucketlists/#{bucketlist.id}",
+          { name: "" },
+          HTTP_AUTHORIZATION: @token
+        )
+        json_response = JSON.parse(response.body)
+        expect(json_response["name"]).to eq ["can't be blank"]
+        expect(response).to have_http_status(400)
+      end
+    end
+
     context "when the bucketlist does not exist for logged in user" do
-      it "edits a single bucketlist" do
+      it "renders error and does not update" do
         create_bucketlist(@user, @token, 1)
         put(
           "/api/v1/bucketlists/2000",
@@ -36,7 +51,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
         )
         json_response = JSON.parse(response.body)
         expect(json_response["error"]).to eq "bucketlist does not exist"
-        expect(response).to have_http_status(403)
+        expect(response).to have_http_status(404)
       end
     end
   end

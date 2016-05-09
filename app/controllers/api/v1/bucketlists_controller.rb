@@ -5,9 +5,9 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlist = Bucketlist.new(bucketlist_params)
     bucketlist.user_id = current_user.id
     if bucketlist.save
-      render json: bucketlist, status: 200
+      render json: bucketlist, status: 201
     else
-      render json:  bucketlist.errors, status: 422
+      render json:  bucketlist.errors, status: 400
     end
   end
 
@@ -35,21 +35,23 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
     if bucketlist
-      bucketlist.update(bucketlist_params)
-      render json: bucketlist, status: 201
+      if bucketlist.update(bucketlist_params)
+        render json: bucketlist, status: 201
+      else
+        render json:  bucketlist.errors, status: 400
+      end
     else
-      render json: { error: "bucketlist does not exist" }, status: 403
+      render json: { error: "bucketlist does not exist" }, status: 404
     end
   end
 
   def destroy
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
-    if bucketlist
-      bucketlist.destroy
-      render json: { message: "bucket have been destroyed" }, status: 200
+    if bucketlist && bucketlist.destroy
+      render json: { message: "bucket has been destroyed" }, status: 200
     else
-      render json: { error: "bucket does not exist" }, status: 403
+      render json: { error: "bucket was not destroyed" }, status: 404
     end
   end
 

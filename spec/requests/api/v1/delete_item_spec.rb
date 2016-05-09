@@ -60,8 +60,8 @@ RSpec.describe "Delete Item", type: :request do
           )
 
           json_response = JSON.parse(response.body)
-          expect(json_response["error"]).to eq "item does not exist"
-          expect(response).to have_http_status(403)
+          expect(json_response["error"]).to eq "item was not destroyed"
+          expect(response).to have_http_status(400)
         end
       end
     end

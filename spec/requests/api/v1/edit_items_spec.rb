@@ -26,25 +26,43 @@ RSpec.describe "Edit Items", type: :request do
 
         json_response = JSON.parse(response.body)
         expect(json_response["item"]["name"]).to eq "buck"
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(200)
       end
+    end
 
-      context "when item does not exists for user" do
-        it "cannot edits an item not created or found" do
-          create_bucketlist(@user, @token, 1)
-          create_item(@user, @token, 1)
-          bucketlist = Bucketlist.last
+    context "when updating with invalid parameters" do
+      it "does not update item" do
+        create_bucketlist(@user, @token, 1)
+        create_item(@user, @token, 1)
+        bucketlist = Bucketlist.last
+        item = Item.last
 
-          put(
-            "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
-            { name: "buck" },
-            HTTP_AUTHORIZATION: @token
-          )
+        put(
+          "/api/v1/bucketlists/#{bucketlist.id}/items/#{ item.id }",
+          { name: "" },
+          HTTP_AUTHORIZATION: @token
+        )
+        json_response = JSON.parse(response.body)
+        expect(json_response["name"]).to eq ["can't be blank"]
+        expect(response).to have_http_status(400)
+      end
+    end
 
-          json_response = JSON.parse(response.body)
-          expect(json_response["error"]).to eq "item does not exist"
-          expect(response).to have_http_status(403)
-        end
+    context "when item does not exists for user" do
+      it "cannot edits an item not created or found" do
+        create_bucketlist(@user, @token, 1)
+        create_item(@user, @token, 1)
+        bucketlist = Bucketlist.last
+
+        put(
+          "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
+          { name: "buck" },
+          HTTP_AUTHORIZATION: @token
+        )
+
+        json_response = JSON.parse(response.body)
+        expect(json_response["error"]).to eq "item does not exist"
+        expect(response).to have_http_status(404)
       end
     end
   end

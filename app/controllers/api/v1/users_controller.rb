@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApplicationController
         status: 200
       )
     else
-      render json: user.errors, status: 422
+      render json: user.errors, status: 400
     end
   end
 

@@ -20,7 +20,7 @@ RSpec.describe "Create Bucketlist", type: :request do
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
         expect(json_response["bucketlist"]["name"]).to eq "bucket1"
         expect(json_response["bucketlist"]["created_by"]).to eq @user.id
       end
@@ -35,7 +35,7 @@ RSpec.describe "Create Bucketlist", type: :request do
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(400)
         expect(json_response["name"]).to eq ["can't be blank"]
       end
     end

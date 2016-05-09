@@ -23,7 +23,7 @@ RSpec.describe "Create Items", type: :request do
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
         expect(json_response["item"]["name"]).to eq "mynames"
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe "Create Items", type: :request do
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(400)
         expect(json_response["name"]).to eq ["can't be blank"]
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe "Create Items", type: :request do
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(400)
         expect(json_response["name"]).to eq ["can't be blank"]
       end
     end
