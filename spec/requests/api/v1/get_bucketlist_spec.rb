@@ -35,7 +35,7 @@ RSpec.describe "Get Bucketlist", type: :request do
   end
 
   describe "get /bucketlists/:id" do
-    context "when user bucketlist does not exist" do
+    context "when bucketlist exist" do
       it "gets a single bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
@@ -52,7 +52,7 @@ RSpec.describe "Get Bucketlist", type: :request do
       end
     end
 
-    context "when user bucketlist does not exist" do
+    context "when bucketlist does not exist" do
       it "renders error" do
         create_bucketlist(@user, @token, 1)
         get("/api/v1/bucketlists/2000", nil, HTTP_AUTHORIZATION: @token)

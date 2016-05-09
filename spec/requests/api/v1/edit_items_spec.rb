@@ -38,7 +38,7 @@ RSpec.describe "Edit Items", type: :request do
         item = Item.last
 
         put(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{ item.id }",
+          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
           { name: "" },
           HTTP_AUTHORIZATION: @token
         )
@@ -48,8 +48,8 @@ RSpec.describe "Edit Items", type: :request do
       end
     end
 
-    context "when item does not exists for user" do
-      it "cannot edits an item not created or found" do
+    context "when item does not exist for user" do
+      it "renders error" do
         create_bucketlist(@user, @token, 1)
         create_item(@user, @token, 1)
         bucketlist = Bucketlist.last
