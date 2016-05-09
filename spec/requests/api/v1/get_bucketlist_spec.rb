@@ -11,7 +11,7 @@ RSpec.describe "Get Bucketlist", type: :request do
   end
 
   describe "get /bucketlists" do
-    context "when user has bucketlists" do
+    context "when user has many bucketlists" do
       it "gets all bucketlists" do
         create_bucketlist(@user, @token, 10)
         get("/api/v1/bucketlists", nil, HTTP_AUTHORIZATION: @token)
@@ -35,8 +35,8 @@ RSpec.describe "Get Bucketlist", type: :request do
   end
 
   describe "get /bucketlists/:id" do
-    context "when bucketlist exist" do
-      it "gets a single bucketlist" do
+    context "when a specific bucketlist exist for user" do
+      it "gets the specific bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
         get(
@@ -52,7 +52,7 @@ RSpec.describe "Get Bucketlist", type: :request do
       end
     end
 
-    context "when bucketlist does not exist" do
+    context "when a specific bucketlist does not exist for user" do
       it "renders error" do
         create_bucketlist(@user, @token, 1)
         get("/api/v1/bucketlists/2000", nil, HTTP_AUTHORIZATION: @token)
@@ -63,7 +63,7 @@ RSpec.describe "Get Bucketlist", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         create_bucketlist(@user, @token, 10)
         get("/api/v1/bucketlists", nil)

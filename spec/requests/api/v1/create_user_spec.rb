@@ -9,7 +9,7 @@ RSpec.describe "Create User", type: :request do
   end
 
   describe "Post /users" do
-    context "valid params" do
+    context "when creating a user with valid params" do
       it "creates new user" do
         post(
           "/api/v1/users/",
@@ -24,7 +24,7 @@ RSpec.describe "Create User", type: :request do
       end
     end
 
-    context "invalid params" do
+    context "when creating a user with invalid params" do
       it "renders error and does not create user" do
         post(
           "/api/v1/users/",

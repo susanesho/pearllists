@@ -11,7 +11,7 @@ RSpec.describe "Create Bucketlist", type: :request do
   end
 
   describe "Post /bucketlists" do
-    context "valid params" do
+    context "when creating a bucketlist with valid params" do
       it "creates a bucketlist" do
         post(
           "/api/v1/bucketlists/",
@@ -26,7 +26,7 @@ RSpec.describe "Create Bucketlist", type: :request do
       end
     end
 
-    context "invalid params" do
+    context "when creating a bucketlist with invalid params" do
       it "renders error and does not create bucketlist" do
         post(
           "/api/v1/bucketlists/",
@@ -40,7 +40,7 @@ RSpec.describe "Create Bucketlist", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         post(
           "/api/v1/bucketlists/",

@@ -1,8 +1,8 @@
 require "rails_helper"
 RSpec.describe "No route found", type: :request do
   describe "get /*unmatched_route" do
-    context "user enters an invalid address" do
-      it "gets a route that does not exist" do
+    context "user requests an invalid route" do
+      it "renders invalid address error message" do
         get("/*unmatched_route")
         json_response = JSON.parse(response.body)
 

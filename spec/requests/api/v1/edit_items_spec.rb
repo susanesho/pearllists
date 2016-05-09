@@ -11,8 +11,8 @@ RSpec.describe "Edit Items", type: :request do
   end
 
   describe "put /bucketlists/:id/items/:id" do
-    context "when bucketlist items exists for user" do
-      it "edits a single bucketlist item" do
+    context "when a bucketlist item exists for user" do
+      it "updates the item" do
         create_bucketlist(@user, @token, 1)
         create_item(@user, @token, 1)
         bucketlist = Bucketlist.last
@@ -30,7 +30,7 @@ RSpec.describe "Edit Items", type: :request do
       end
     end
 
-    context "when updating with invalid parameters" do
+    context "when updating with invalid params" do
       it "does not update item" do
         create_bucketlist(@user, @token, 1)
         create_item(@user, @token, 1)
@@ -66,7 +66,7 @@ RSpec.describe "Edit Items", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         create_bucketlist(@user, @token, 1)
         create_item(@user, @token, 1)

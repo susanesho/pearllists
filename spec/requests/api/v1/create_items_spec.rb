@@ -11,7 +11,7 @@ RSpec.describe "Create Items", type: :request do
   end
 
   describe "Post /items" do
-    context "valid params" do
+    context "when creating an item with valid params" do
       it "creates an item" do
         create_bucketlist(@user, @token, 10)
         bucketlist = Bucketlist.last
@@ -28,8 +28,8 @@ RSpec.describe "Create Items", type: :request do
       end
     end
 
-    context "invalid params" do
-      it "renders error and does not create items" do
+    context "when creating an item with invalid params" do
+      it "renders error and does not create item" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
 
@@ -45,7 +45,7 @@ RSpec.describe "Create Items", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         create_bucketlist(@user, @token, 10)
         bucketlist = Bucketlist.last
