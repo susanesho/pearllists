@@ -50,7 +50,7 @@ RSpec.describe "Login/Logout Users", type: :request do
         get("/api/v1/auth/logout")
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(401)
         expect(json_response["error"]).to eq "unauthorized access"
       end
     end

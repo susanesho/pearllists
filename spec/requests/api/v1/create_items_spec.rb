@@ -44,5 +44,21 @@ RSpec.describe "Create Items", type: :request do
         expect(json_response["name"]).to eq ["can't be blank"]
       end
     end
+
+    context "no authorization token" do
+      it "renders unauthorized access error" do
+        create_bucketlist(@user, @token, 10)
+        bucketlist = Bucketlist.last
+
+        post(
+          "/api/v1/bucketlists/#{bucketlist.id}/items",
+          name: "mynames"
+        )
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["error"]).to eq "unauthorized access"
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 end

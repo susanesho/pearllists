@@ -19,8 +19,7 @@ RSpec.describe "Delete Item", type: :request do
         item = Item.last
 
         delete(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
-          { name: "buck" },
+          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}", {},
           HTTP_AUTHORIZATION: @token
         )
 
@@ -62,6 +61,23 @@ RSpec.describe "Delete Item", type: :request do
           json_response = JSON.parse(response.body)
           expect(json_response["error"]).to eq "item was not destroyed"
           expect(response).to have_http_status(400)
+        end
+      end
+
+      context "no authorization token" do
+        it "renders unauthorized access error" do
+          create_bucketlist(@user, @token, 1)
+          create_item(@user, @token, 1)
+          bucketlist = Bucketlist.last
+          item = Item.last
+
+          delete(
+            "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
+          )
+          json_response = JSON.parse(response.body)
+
+          expect(json_response["error"]).to eq "unauthorized access"
+          expect(response).to have_http_status(401)
         end
       end
     end

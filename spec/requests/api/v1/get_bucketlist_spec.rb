@@ -62,5 +62,16 @@ RSpec.describe "Get Bucketlist", type: :request do
         expect(json_response["error"]).to eq "no bucket found"
       end
     end
+
+    context "no authorization token" do
+      it "renders unauthorized access error" do
+        create_bucketlist(@user, @token, 10)
+        get("/api/v1/bucketlists", nil)
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["error"]).to eq "unauthorized access"
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 end

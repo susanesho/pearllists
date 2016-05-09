@@ -27,8 +27,8 @@ RSpec.describe "Search Bucketlist", type: :request do
       end
     end
 
-    context "search params" do
-      it "gets search result" do
+    context "paginated request" do
+      it "returns user specified results" do
         create_bucketlist(@user, @token, 10)
 
         get(
@@ -40,6 +40,21 @@ RSpec.describe "Search Bucketlist", type: :request do
 
         expect(response).to have_http_status(200)
         expect(json_response["bucketlists"].length).to eq 2
+      end
+    end
+
+    context "no authorization token" do
+      it "renders unauthorized access error" do
+        create_bucketlist(@user, @token, 5)
+
+        get(
+          "/api/v1/bucketlists/?q=",
+          nil,
+        )
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["error"]).to eq "unauthorized access"
+        expect(response).to have_http_status(401)
       end
     end
   end
