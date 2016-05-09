@@ -11,8 +11,8 @@ RSpec.describe "Delete Bucketlist", type: :request do
   end
 
   describe "delete /bucketlists/:id" do
-    context "when a user deletes a bucketlist" do
-      it "deletes a single bucketlist" do
+    context "when bucketlist exists" do
+      it "deletes the bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
         delete(
@@ -27,7 +27,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
       end
     end
 
-    context "when  bucketlist does not exist" do
+    context "when bucketlist does not exist" do
       it "renders error" do
         create_bucketlist(@user, @token, 1)
         delete("/api/v1/bucketlists/2000", nil, HTTP_AUTHORIZATION: @token)

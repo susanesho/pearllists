@@ -11,8 +11,8 @@ RSpec.describe "Edit Bucketlist", type: :request do
   end
 
   describe "put /bucketlists/:id" do
-    context "when bucketlist exists for user" do
-      it "edits a single bucketlist" do
+    context "when bucketlist exists" do
+      it "updates bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
         put(
@@ -41,8 +41,8 @@ RSpec.describe "Edit Bucketlist", type: :request do
       end
     end
 
-    context "when the bucketlist does not exist for logged in user" do
-      it "renders error and does not update" do
+    context "when the bucketlist does not exist" do
+      it "renders error and does not update bucketlist" do
         create_bucketlist(@user, @token, 1)
         put(
           "/api/v1/bucketlists/2000",

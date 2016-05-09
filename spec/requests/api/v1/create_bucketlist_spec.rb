@@ -27,7 +27,7 @@ RSpec.describe "Create Bucketlist", type: :request do
     end
 
     context "invalid params" do
-      it "creates a bucketlist" do
+      it "renders error and does not create bucketlist" do
         post(
           "/api/v1/bucketlists/",
           nil,

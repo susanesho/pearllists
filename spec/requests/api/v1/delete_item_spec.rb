@@ -11,8 +11,8 @@ RSpec.describe "Delete Item", type: :request do
   end
 
   describe "destroy /bucketlists/:id/items/:id" do
-    context "when a single item is destroyed" do
-      it "destroys a single item" do
+    context "when item exists" do
+      it "destroys the item" do
         create_bucketlist(@user, @token, 1)
         create_item(@user, @token, 1)
         bucketlist = Bucketlist.last
@@ -29,8 +29,8 @@ RSpec.describe "Delete Item", type: :request do
         expect(response).to have_http_status(200)
       end
 
-      context "when a single item cannot be destroyed" do
-        it "destroys an item that does not belong to the user" do
+      context "when item does not belong to user" do
+        it "renders error and does not destroy item" do
           create_bucketlist(@user, @token, 1)
           create_item(@user, @token, 1)
           item = Item.last
@@ -47,8 +47,8 @@ RSpec.describe "Delete Item", type: :request do
         end
       end
 
-      context "when a single item does not exist" do
-        it "throws an error" do
+      context "when item does not exist" do
+        it "renders error" do
           create_bucketlist(@user, @token, 1)
           create_item(@user, @token, 1)
           bucketlist = Bucketlist.last
