@@ -35,7 +35,7 @@ RSpec.describe "Get Bucketlist", type: :request do
   end
 
   describe "get /bucketlists/:id" do
-    context "when user bucketlist does not exist" do
+    context "when bucketlist exist" do
       it "gets a single bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
@@ -52,7 +52,7 @@ RSpec.describe "Get Bucketlist", type: :request do
       end
     end
 
-    context "when user bucketlist does not exist" do
+    context "when bucketlist does not exist" do
       it "renders error" do
         create_bucketlist(@user, @token, 1)
         get("/api/v1/bucketlists/2000", nil, HTTP_AUTHORIZATION: @token)
@@ -60,6 +60,17 @@ RSpec.describe "Get Bucketlist", type: :request do
 
         expect(response).to have_http_status(404)
         expect(json_response["error"]).to eq "no bucket found"
+      end
+    end
+
+    context "no authorization token" do
+      it "renders unauthorized access error" do
+        create_bucketlist(@user, @token, 10)
+        get("/api/v1/bucketlists", nil)
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["error"]).to eq "unauthorized access"
+        expect(response).to have_http_status(401)
       end
     end
   end

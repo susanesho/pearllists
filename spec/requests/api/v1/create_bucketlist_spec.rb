@@ -27,7 +27,7 @@ RSpec.describe "Create Bucketlist", type: :request do
     end
 
     context "invalid params" do
-      it "creates a bucketlist" do
+      it "renders error and does not create bucketlist" do
         post(
           "/api/v1/bucketlists/",
           nil,
@@ -37,6 +37,19 @@ RSpec.describe "Create Bucketlist", type: :request do
 
         expect(response).to have_http_status(400)
         expect(json_response["name"]).to eq ["can't be blank"]
+      end
+    end
+
+    context "no authorization token" do
+      it "renders unauthorized access error" do
+        post(
+          "/api/v1/bucketlists/",
+          name: "bucket1"
+        )
+        json_response = JSON.parse(response.body)
+
+        expect(json_response["error"]).to eq "unauthorized access"
+        expect(response).to have_http_status(401)
       end
     end
   end

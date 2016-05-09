@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     if decoded_auth_token && valid_token
       @current_user ||= User.find_by(id: decoded_auth_token["user_id"])
     else
-      render json: { error: "unauthorized access" }
+      render json: { error: "unauthorized access" }, status: 401
     end
   end
 

@@ -21,9 +21,11 @@ RSpec.describe "Login/Logout Users", type: :request do
       end
     end
 
-    context "logging in without credentials" do
+    context "logging in with invalid credentials" do
       it "renders error" do
-        post("/api/v1/auth/login")
+        email = Faker::Internet.email
+        password = Faker::Internet.password(10, 20)
+        post("/api/v1/auth/login", email: email, password: password)
         json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(403)
@@ -42,12 +44,13 @@ RSpec.describe "Login/Logout Users", type: :request do
         expect(json_response["message"]).to eq "logged out successfully"
       end
     end
-    context "logging out a user without a token" do
-      it "logs a user out without a token" do
+
+    context "logging out without a token" do
+      it "renders error" do
         get("/api/v1/auth/logout")
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(401)
         expect(json_response["error"]).to eq "unauthorized access"
       end
     end

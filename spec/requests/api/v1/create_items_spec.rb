@@ -28,8 +28,8 @@ RSpec.describe "Create Items", type: :request do
       end
     end
 
-    context "when a user creates an item without a name" do
-      it "renders error" do
+    context "invalid params" do
+      it "renders error and does not create items" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
 
@@ -45,19 +45,19 @@ RSpec.describe "Create Items", type: :request do
       end
     end
 
-    context "when a bucketlist id does not exist or belong to user" do
-      it "renders error" do
-        create_bucketlist(@user, @token, 1)
+    context "no authorization token" do
+      it "renders unauthorized access error" do
+        create_bucketlist(@user, @token, 10)
         bucketlist = Bucketlist.last
+
         post(
           "/api/v1/bucketlists/#{bucketlist.id}/items",
-          nil,
-          HTTP_AUTHORIZATION: @token
+          name: "mynames"
         )
         json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(400)
-        expect(json_response["name"]).to eq ["can't be blank"]
+        expect(json_response["error"]).to eq "unauthorized access"
+        expect(response).to have_http_status(401)
       end
     end
   end
