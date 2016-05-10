@@ -26,7 +26,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
       end
     end
 
-    context "when updating with invalid parameters" do
+    context "when updating with invalid params" do
       it "does not update bucketlist" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last
@@ -55,7 +55,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last

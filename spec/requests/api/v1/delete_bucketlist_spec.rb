@@ -38,7 +38,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         create_bucketlist(@user, @token, 1)
         bucketlist = Bucketlist.last

@@ -11,8 +11,8 @@ RSpec.describe "Search Bucketlist", type: :request do
   end
 
   describe "Post /bucketlist" do
-    context "search params" do
-      it "gets search result" do
+    context "when search parameter is passed" do
+      it "gets the search result" do
         create_bucketlist(@user, @token, 5)
 
         get(
@@ -27,7 +27,7 @@ RSpec.describe "Search Bucketlist", type: :request do
       end
     end
 
-    context "paginated request" do
+    context "when a request is paginated" do
       it "returns user specified results" do
         create_bucketlist(@user, @token, 10)
 
@@ -43,7 +43,7 @@ RSpec.describe "Search Bucketlist", type: :request do
       end
     end
 
-    context "no authorization token" do
+    context "when no authorization token is passed" do
       it "renders unauthorized access error" do
         create_bucketlist(@user, @token, 5)
 

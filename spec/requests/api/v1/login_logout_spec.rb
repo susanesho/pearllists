@@ -35,7 +35,7 @@ RSpec.describe "Login/Logout Users", type: :request do
   end
 
   describe "get /auth/logout" do
-    context "logging out a user" do
+    context "logging out with a token" do
       it "logs a user out" do
         get("/api/v1/auth/logout", nil, HTTP_AUTHORIZATION: @token)
         json_response = JSON.parse(response.body)
