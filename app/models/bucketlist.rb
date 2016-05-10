@@ -10,7 +10,7 @@ class Bucketlist < ActiveRecord::Base
   scope(
     :search, lambda do |q|
       unless q.nil?
-        where("name LIKE ?", "%#{q}%")
+        where("lower(name) LIKE ?", "%#{q.downcase}%")
       end
     end
   )
