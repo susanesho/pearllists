@@ -10,9 +10,9 @@ RSpec.describe "Search Bucketlist", type: :request do
     Bucketlist.destroy_all
   end
 
-  describe "Post /bucketlist" do
-    context "when search parameter is passed" do
-      it "gets the search result" do
+  describe "Get /bucketlists/?q" do
+    context "when no specific search parameter is passed" do
+      it "gets all bucketlists as the search result" do
         create_bucketlist(@user, @token, 5)
 
         get(
@@ -24,6 +24,23 @@ RSpec.describe "Search Bucketlist", type: :request do
 
         expect(response).to have_http_status(200)
         expect(json_response["bucketlists"].length).to eq 5
+      end
+
+      context "when a specific search parameter is passed" do
+        it "gets the specific search result" do
+           Bucketlist.create(name: "Neski", user: @user)
+           Bucketlist.create(name: "eski", user: @user)
+
+          get(
+            "/api/v1/bucketlists/?q=n",
+            nil,
+            HTTP_AUTHORIZATION: @token
+          )
+          json_response = JSON.parse(response.body)
+
+          expect(response).to have_http_status(200)
+          expect(json_response["bucketlists"].length).to eq 1
+        end
       end
     end
 
