@@ -50,7 +50,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
           HTTP_AUTHORIZATION: @token
         )
         json_response = JSON.parse(response.body)
-        expect(json_response["error"]).to eq "bucketlist does not exist"
+        expect(json_response["error"]).to eq "bucket does not exist"
         expect(response).to have_http_status(404)
       end
     end

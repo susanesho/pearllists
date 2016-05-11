@@ -35,21 +35,12 @@ class Api::V1::BucketlistsController < ApplicationController
   def update
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
-    if bucketlist
-      update_lists(bucketlist)
-    else
-      render json: { error: "bucketlist does not exist" }, status: 404
-    end
+    update_lists(bucketlist, "bucket")
   end
 
   def destroy
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
-
-    if bucketlist
-      destroy_lists(bucketlist)
-    else
-      render json: { error: "bucket was not destroyed" }, status: 404
-    end
+    destroy_lists(bucketlist, "bucket")
   end
 
   private

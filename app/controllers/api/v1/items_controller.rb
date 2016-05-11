@@ -16,21 +16,12 @@ class Api::V1::ItemsController < ApplicationController
 
   def update
     item = Item.find_by(id: params[:id])
-
-    if item
-      update_lists(item)
-    else
-      render json: { error: "item does not exist" }, status: 404
-    end
+    update_lists(item, "item")
   end
 
   def destroy
     item = Item.find_by(id: params[:id])
-     if item
-      destroy_lists(item)
-    else
-      render json: { error: "item was not destroyed" }, status: 400
-    end
+    destroy_lists(item, "item")
   end
 
   private
