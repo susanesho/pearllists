@@ -10,7 +10,7 @@ RSpec.describe "Search Bucketlist", type: :request do
     Bucketlist.destroy_all
   end
 
-  describe "Get /bucketlists/?q" do
+  describe "Getting bucketlists" do
     context "when no specific search parameter is passed" do
       it "gets all bucketlists as the search result" do
         create_bucketlist(@user, @token, 5)
@@ -28,8 +28,8 @@ RSpec.describe "Search Bucketlist", type: :request do
 
       context "when a specific search parameter is passed" do
         it "gets the specific search result" do
-           Bucketlist.create(name: "Neski", user: @user)
-           Bucketlist.create(name: "eski", user: @user)
+          Bucketlist.create(name: "Neski", user: @user)
+          Bucketlist.create(name: "eski", user: @user)
 
           get(
             "/api/v1/bucketlists/?q=n",
