@@ -1,4 +1,5 @@
 class Api::V1::BucketlistsController < ApplicationController
+  include Modify
   before_action :authenticate
 
   def create
@@ -35,11 +36,7 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
     if bucketlist
-      if bucketlist.update(bucketlist_params)
-        render json: bucketlist, status: 201
-      else
-        render json:  bucketlist.errors, status: 400
-      end
+      update_lists(bucketlist)
     else
       render json: { error: "bucketlist does not exist" }, status: 404
     end
@@ -48,8 +45,8 @@ class Api::V1::BucketlistsController < ApplicationController
   def destroy
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
 
-    if bucketlist && bucketlist.destroy
-      render json: { message: "bucket has been destroyed" }, status: 200
+    if bucketlist
+      destroy_lists(bucketlist)
     else
       render json: { error: "bucket was not destroyed" }, status: 404
     end

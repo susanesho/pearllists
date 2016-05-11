@@ -21,7 +21,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
           HTTP_AUTHORIZATION: @token
         )
         json_response = JSON.parse(response.body)
-        expect(json_response["message"]).to eq "bucket has been destroyed"
+        expect(json_response["message"]).to eq "bucketlist destroyed"
         expect(Bucketlist.count).to eq 0
         expect(response).to have_http_status(200)
       end
