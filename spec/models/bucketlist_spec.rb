@@ -18,7 +18,7 @@ RSpec.describe Bucketlist, type: :model do
       end
     end
 
-     context "when name is not present" do
+    context "when name is not present" do
       it "does not create bucketlist" do
         name = ""
         bucketlist = Bucketlist.new(name: name)

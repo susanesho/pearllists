@@ -42,8 +42,8 @@ RSpec.describe User, type: :model do
 
     context "when email is not unique" do
       it "does not create user" do
-        create(:user, email:"susan@gmail.com")
-        user = build(:user, email:"susan@gmail.com")
+        create(:user, email: "susan@gmail.com")
+        user = build(:user, email: "susan@gmail.com")
         expect(user).to be_invalid
         expect(user.errors[:email]).to include "has already been taken"
         User.destroy_all
