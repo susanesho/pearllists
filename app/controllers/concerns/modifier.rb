@@ -1,5 +1,5 @@
-module Modify
-  def update_lists(list, name)
+module Modifier
+  def update_list(list, name)
     if list
       if list.update(name: params[:name])
         render json: list, status: 200
@@ -11,7 +11,7 @@ module Modify
     end
   end
 
-  def destroy_lists(list, name)
+  def destroy_list(list, name)
     if list && list.destroy
       render json: { message: "#{name} destroyed" }, status: 200
     else

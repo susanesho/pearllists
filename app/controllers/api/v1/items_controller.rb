@@ -1,5 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
-  include Modify
+  include Modifier
   before_action :authenticate
   before_action :check_bucketlist
 
@@ -16,12 +16,12 @@ class Api::V1::ItemsController < ApplicationController
 
   def update
     item = Item.find_by(id: params[:id])
-    update_lists(item, "item")
+    update_list(item, "item")
   end
 
   def destroy
     item = Item.find_by(id: params[:id])
-    destroy_lists(item, "item")
+    destroy_list(item, "item")
   end
 
   private

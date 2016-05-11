@@ -1,5 +1,5 @@
 class Api::V1::BucketlistsController < ApplicationController
-  include Modify
+  include Modifier
   before_action :authenticate
 
   def create
@@ -34,13 +34,12 @@ class Api::V1::BucketlistsController < ApplicationController
 
   def update
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
-
-    update_lists(bucketlist, "bucket")
+    update_list(bucketlist, "bucket")
   end
 
   def destroy
     bucketlist = Bucketlist.find_by(id: params[:id], user_id: current_user.id)
-    destroy_lists(bucketlist, "bucket")
+    destroy_list(bucketlist, "bucket")
   end
 
   private
