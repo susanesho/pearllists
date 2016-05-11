@@ -22,7 +22,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
         )
         json_response = JSON.parse(response.body)
         expect(json_response["bucketlist"]["name"]).to eq "bucket3"
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(200)
       end
     end
 

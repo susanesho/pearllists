@@ -1,4 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
+  include Modify
   before_action :authenticate
   before_action :check_bucketlist
 
@@ -17,11 +18,7 @@ class Api::V1::ItemsController < ApplicationController
     item = Item.find_by(id: params[:id])
 
     if item
-      if item.update(item_params)
-        render json: item, status: 200
-      else
-        render json: item.errors, status: 400
-      end
+      update_lists(item)
     else
       render json: { error: "item does not exist" }, status: 404
     end
@@ -29,9 +26,8 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     item = Item.find_by(id: params[:id])
-
-    if item && item.destroy
-      render json: { message: "item destroyed" }, status: 200
+     if item
+      destroy_lists(item)
     else
       render json: { error: "item was not destroyed" }, status: 400
     end
