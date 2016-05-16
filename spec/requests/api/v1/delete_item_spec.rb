@@ -2,7 +2,7 @@ require "rails_helper"
 RSpec.describe "Delete Item", type: :request do
   before(:all) do
     @user = create(:user)
-    @token = set_login(@user)
+    # @token = set_login(@user)
   end
 
   after(:all) do
@@ -13,14 +13,16 @@ RSpec.describe "Delete Item", type: :request do
   describe "destroy /bucketlists/:id/items/:id" do
     context "when item exists for the bucketlist" do
       it "destroys the item" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
-        item = Item.last
+
+        # bucketlist = create(:bucketlist, user: @user)
+        item = create(:item)
+        binding.pry
+        # bucketlist = Bucketlist.last
+        # item = Item.last
 
         delete(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}", {},
-          HTTP_AUTHORIZATION: @token
+          "/api/v1/bucketlists/#{item.bucketlist.id}/items/#{item.id}", {},
+          HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
         json_response = JSON.parse(response.body)
@@ -29,57 +31,57 @@ RSpec.describe "Delete Item", type: :request do
       end
     end
 
-    context "when item does not belong to the bucketlist" do
-      it "renders error and does not destroy item" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        item = Item.last
+    # context "when item does not belong to the bucketlist" do
+    #   it "renders error and does not destroy item" do
+    #     # create_bucketlist(@user, @token, 1)
+    #     item = create(:item, user: @user)
+    #     # item = Item.last
 
-        delete(
-          "/api/v1/bucketlists/2000/items/#{item.id}",
-          { name: "buck" },
-          HTTP_AUTHORIZATION: @token
-        )
+    #     delete(
+    #       "/api/v1/bucketlists/2000/items/#{item.id}",
+    #       { name: "buck" },
+    #       HTTP_AUTHORIZATION: @token
+    #     )
 
-        json_response = JSON.parse(response.body)
-        expect(json_response["error"]).to eq "Unauthorized"
-        expect(response).to have_http_status(403)
-      end
-    end
+    #     json_response = JSON.parse(response.body)
+    #     expect(json_response["error"]).to eq "Unauthorized"
+    #     expect(response).to have_http_status(403)
+    #   end
+    # end
 
-    context "when item does not exist" do
-      it "renders error" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
+    # context "when item does not exist" do
+    #   it "renders error" do
+    #     # create_bucketlist(@user, @token, 1)
+    #     item = create(:item)
+    #     # bucketlist = Bucketlist.last
 
-        delete(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
-          { name: "buck" },
-          HTTP_AUTHORIZATION: @token
-        )
+    #     delete(
+    #       "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
+    #       { name: "buck" },
+    #       HTTP_AUTHORIZATION: @token
+    #     )
 
-        json_response = JSON.parse(response.body)
-        expect(json_response["error"]).to eq "item was not destroyed"
-        expect(response).to have_http_status(404)
-      end
-    end
+    #     json_response = JSON.parse(response.body)
+    #     expect(json_response["error"]).to eq "item was not destroyed"
+    #     expect(response).to have_http_status(404)
+    #   end
+    # end
 
-    context "when no authorization token is passed" do
-      it "renders unauthorized access error" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
-        item = Item.last
+    # context "when no authorization token is passed" do
+    #   it "renders unauthorized access error" do
+    #     # create_bucketlist(@user, @token, 1)
+    #     item = create(:item, user: @user)
+    #     # bucketlist = Bucketlist.last
+    #     # item = Item.last
 
-        delete(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        )
-        json_response = JSON.parse(response.body)
+    #     delete(
+    #       "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
+    #     )
+    #     json_response = JSON.parse(response.body)
 
-        expect(json_response["error"]).to eq "unauthorized access"
-        expect(response).to have_http_status(401)
-      end
-    end
+    #     expect(json_response["error"]).to eq "unauthorized access"
+    #     expect(response).to have_http_status(401)
+    #   end
+    # end
   end
 end

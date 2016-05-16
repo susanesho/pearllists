@@ -13,8 +13,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
   describe "delete /bucketlists/:id" do
     context "when bucketlist exists" do
       it "deletes the bucketlist" do
-        create_bucketlist(@user, @token, 1)
-        bucketlist = Bucketlist.last
+        bucketlist = create(:bucketlist, user: @user)
         delete(
           "/api/v1/bucketlists/#{bucketlist.id}",
           nil,
@@ -29,7 +28,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
 
     context "when bucketlist does not exist" do
       it "renders error" do
-        create_bucketlist(@user, @token, 1)
+        bucketlist = create(:bucketlist, user: @user)
         delete("/api/v1/bucketlists/2000", nil, HTTP_AUTHORIZATION: @token)
         json_response = JSON.parse(response.body)
         expect(json_response["error"]).to eq "bucket was not destroyed"
@@ -40,8 +39,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
 
     context "when no authorization token is passed" do
       it "renders unauthorized access error" do
-        create_bucketlist(@user, @token, 1)
-        bucketlist = Bucketlist.last
+        bucketlist = create(:bucketlist, user: @user)
         delete(
           "/api/v1/bucketlists/#{bucketlist.id}",
           nil

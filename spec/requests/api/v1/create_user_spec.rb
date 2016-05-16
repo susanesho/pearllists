@@ -25,7 +25,7 @@ RSpec.describe "Create User", type: :request do
     end
 
     context "when creating a user with invalid params" do
-      it "renders error and does not create user" do
+      it "renders error message and does not create user" do
         post(
           "/api/v1/users/",
           name: "tayelolu",
