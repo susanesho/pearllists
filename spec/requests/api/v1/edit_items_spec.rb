@@ -1,66 +1,50 @@
 require "rails_helper"
-RSpec.describe "Edit Items", type: :request do
-  before(:all) do
-    @user = create(:user)
-    @token = set_login(@user)
-  end
-
+RSpec.describe "Edit  @items", type: :request do
   after(:all) do
-    User.destroy_all
-    Bucketlist.destroy_all
+    Item.destroy_all
   end
 
   describe "put /bucketlists/:id/items/:id" do
-    context "when a bucketlist item exists for user" do
-      it "updates the item" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
-        item = Item.last
+    context "when a bucketlist  @item exists for user" do
+      it "updates the  @item" do
+        item = create(:item)
 
         put(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
+          "/api/v1/bucketlists/#{item.bucketlist.id}/items/#{item.id}",
           { name: "buck" },
-          HTTP_AUTHORIZATION: @token
+          HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        json_response = JSON.parse(response.body)
         expect(json_response["item"]["name"]).to eq "buck"
         expect(response).to have_http_status(200)
       end
     end
 
     context "when updating with invalid params" do
-      it "does not update item" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
-        item = Item.last
+      it "does not update  @item" do
+        item = create(:item)
 
         put(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
+          "/api/v1/bucketlists/#{item.bucketlist.id}/items/#{item.id}",
           { name: "" },
-          HTTP_AUTHORIZATION: @token
+          HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
-        json_response = JSON.parse(response.body)
+
         expect(json_response["name"]).to eq ["can't be blank"]
         expect(response).to have_http_status(400)
       end
     end
 
-    context "when item does not exist for user" do
+    context "when  @item does not exist for user" do
       it "renders error" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
+        item = create(:item)
 
         put(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/20000",
+          "/api/v1/bucketlists/#{item.bucketlist.id}/items/20000",
           { name: "buck" },
-          HTTP_AUTHORIZATION: @token
+          HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        json_response = JSON.parse(response.body)
         expect(json_response["error"]).to eq "item does not exist"
         expect(response).to have_http_status(404)
       end
@@ -68,16 +52,12 @@ RSpec.describe "Edit Items", type: :request do
 
     context "when no authorization token is passed" do
       it "renders unauthorized access error" do
-        create_bucketlist(@user, @token, 1)
-        create_item(@user, @token, 1)
-        bucketlist = Bucketlist.last
-        item = Item.last
+        item = create(:item)
 
         put(
-          "/api/v1/bucketlists/#{bucketlist.id}/items/#{item.id}",
+          "/api/v1/bucketlists/#{item.bucketlist.id}/items/#{item.id}",
           name: "buck"
         )
-        json_response = JSON.parse(response.body)
 
         expect(json_response["error"]).to eq "unauthorized access"
         expect(response).to have_http_status(401)

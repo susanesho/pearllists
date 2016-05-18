@@ -18,5 +18,6 @@ group :development, :test do
   gem "pry-rails"
   gem "factory_girl_rails"
   gem "faker"
+  gem "shoulda-matchers"
 end
 gem "pg", group: :production

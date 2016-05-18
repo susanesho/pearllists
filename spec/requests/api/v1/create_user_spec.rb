@@ -17,7 +17,6 @@ RSpec.describe "Create User", type: :request do
           email: "tayelolu@gmail.com",
           password: "tayeloluejire345"
         )
-        json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(200)
         expect(json_response["name"]).to eq "tayelolu"
@@ -32,7 +31,6 @@ RSpec.describe "Create User", type: :request do
           email: "",
           password: "tayeloluejire345"
         )
-        json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(400)
         expect(json_response["email"]).to eq ["can't be blank"]
