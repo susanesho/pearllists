@@ -4,7 +4,6 @@ RSpec.describe "No route found", type: :request do
     context "user requests an invalid route" do
       it "renders invalid address error message" do
         get("/*unmatched_route")
-        json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(404)
         expect(

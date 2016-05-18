@@ -1,30 +1,19 @@
 require "rails_helper"
 
 RSpec.describe Item, type: :model do
-  let(:item) { Item.new }
+  subject { create(:item) }
 
-  describe "instance method calls" do
-    it { expect(item).to respond_to(:name) }
-    it { expect(item).to respond_to(:done) }
-    it { expect(item).to respond_to(:bucketlist_id) }
+  describe "instance methods" do
+    it { is_expected.to respond_to :name }
+    it { is_expected.to respond_to :done }
+    it { is_expected.to respond_to :bucketlist }
   end
 
-  describe "creating items" do
-    context "when name is present" do
-      it "creates item" do
-        name = "soyamilk"
-        item = Item.new(name: name)
-        expect(item).to be_valid
-      end
-    end
+  describe "item validations" do
+    it { should validate_presence_of :name }
+  end
 
-    context "when name is not present" do
-      it "does not create item" do
-        name = ""
-        item = Item.new(name: name)
-        expect(item).to be_invalid
-        expect(item.errors[:name]).to include "can't be blank"
-      end
-    end
+  describe "item associations" do
+    it { should belong_to :bucketlist }
   end
 end

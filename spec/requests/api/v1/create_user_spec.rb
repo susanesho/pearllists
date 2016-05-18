@@ -17,7 +17,6 @@ RSpec.describe "Create User", type: :request do
           email: "tayelolu@gmail.com",
           password: "tayeloluejire345"
         )
-        json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(200)
         expect(json_response["name"]).to eq "tayelolu"
@@ -25,14 +24,13 @@ RSpec.describe "Create User", type: :request do
     end
 
     context "when creating a user with invalid params" do
-      it "renders error and does not create user" do
+      it "renders error message and does not create user" do
         post(
           "/api/v1/users/",
           name: "tayelolu",
           email: "",
           password: "tayeloluejire345"
         )
-        json_response = JSON.parse(response.body)
 
         expect(response).to have_http_status(400)
         expect(json_response["email"]).to eq ["can't be blank"]
