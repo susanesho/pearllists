@@ -9,19 +9,19 @@ class Api::V1::SessionsController < ApplicationController
       Token.create(token: token, user_id: user.id)
       render(
         json: {
-          message: "logged in successfully",
+          message: message.login_success,
           token: token
         },
         status: 200
       )
     else
-      render json: { error: "user not found" }, status: 403
+      render json: { error: message.no_user_found }, status: 403
     end
   end
 
   def destroy
     token = Token.find_by(user_id: current_user.id)
     token.destroy
-    render json: { message: "logged out successfully" }, status: 200
+    render json: { message: message.logout_success }, status: 200
   end
 end

@@ -8,4 +8,8 @@ module ApiHelpers
   def json_response
     JSON.parse(response.body)
   end
+
+  def message
+    @message ||= Messages.new
+  end
 end

@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
         json: {
           name: user.name,
           email: user.email,
-          message: "account created and logged in",
+          message: message.account_created,
           token: token
         },
         status: 200

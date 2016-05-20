@@ -7,15 +7,21 @@ module Modifier
         render json:  list.errors, status: 400
       end
     else
-      render json: { error: "#{name} does not exist" }, status: 404
+      render json: {
+        error: message.update_message(list, name)
+      }, status: 404
     end
   end
 
   def destroy_list(list, name)
     if list && list.destroy
-      render json: { message: "#{name} destroyed" }, status: 200
+      render json: {
+        message: message.delete_success_message(list, name)
+      }, status: 200
     else
-      render json: { error: "#{name} was not destroyed" }, status: 404
+      render json: {
+        error: message.delete_error_message(list, name)
+      }, status: 404
     end
   end
 end

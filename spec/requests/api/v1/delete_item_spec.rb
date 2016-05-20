@@ -14,7 +14,8 @@ RSpec.describe "Delete Item", type: :request do
           HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        expect(json_response["message"]).to eq "item destroyed"
+        expect(json_response["message"]).
+          to eq message.delete_success_message(item, "item")
         expect(response).to have_http_status(200)
       end
     end
@@ -29,7 +30,7 @@ RSpec.describe "Delete Item", type: :request do
           HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        expect(json_response["error"]).to eq "Unauthorized"
+        expect(json_response["error"]).to eq message.check_user_bucket
         expect(response).to have_http_status(403)
       end
     end
@@ -44,7 +45,8 @@ RSpec.describe "Delete Item", type: :request do
           HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        expect(json_response["error"]).to eq "item was not destroyed"
+        expect(json_response["error"]).
+          to eq message.delete_error_message(item, "item")
         expect(response).to have_http_status(404)
       end
     end
@@ -57,7 +59,7 @@ RSpec.describe "Delete Item", type: :request do
           "/api/v1/bucketlists/#{item.bucketlist.id}/items/#{item.id}",
         )
 
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
         expect(response).to have_http_status(401)
       end
     end

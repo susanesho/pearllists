@@ -16,7 +16,7 @@ RSpec.describe "Login/Logout Users", type: :request do
         post("/api/v1/auth/login", email: @user.email, password: @user.password)
 
         expect(response).to have_http_status(200)
-        expect(json_response["message"]).to eq "logged in successfully"
+        expect(json_response["message"]).to eq message.login_success
       end
     end
 
@@ -27,7 +27,7 @@ RSpec.describe "Login/Logout Users", type: :request do
         post("/api/v1/auth/login", email: email, password: password)
 
         expect(response).to have_http_status(403)
-        expect(json_response["error"]).to eq "user not found"
+        expect(json_response["error"]).to eq message.no_user_found
       end
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe "Login/Logout Users", type: :request do
         get("/api/v1/auth/logout", nil, HTTP_AUTHORIZATION: @token)
 
         expect(response).to have_http_status(200)
-        expect(json_response["message"]).to eq "logged out successfully"
+        expect(json_response["message"]).to eq message.logout_success
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe "Login/Logout Users", type: :request do
         get("/api/v1/auth/logout")
 
         expect(response).to have_http_status(401)
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
       end
     end
   end

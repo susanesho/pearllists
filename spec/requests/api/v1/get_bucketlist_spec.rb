@@ -33,7 +33,7 @@ RSpec.describe "Get Bucketlist", type: :request do
         )
 
         expect(response).to have_http_status(404)
-        expect(json_response["error"]).to eq "no buckets found"
+        expect(json_response["error"]).to eq message.no_bucket_found
       end
     end
   end
@@ -66,7 +66,7 @@ RSpec.describe "Get Bucketlist", type: :request do
         )
 
         expect(response).to have_http_status(404)
-        expect(json_response["error"]).to eq "no bucket found"
+        expect(json_response["error"]).to eq message.no_bucket_found
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe "Get Bucketlist", type: :request do
       it "renders unauthorized access error" do
         get("/api/v1/bucketlists", nil)
 
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
         expect(response).to have_http_status(401)
       end
     end

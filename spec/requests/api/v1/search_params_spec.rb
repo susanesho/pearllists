@@ -62,7 +62,7 @@ RSpec.describe "Search Bucketlist", type: :request do
           nil,
         )
 
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
         expect(response).to have_http_status(401)
       end
     end

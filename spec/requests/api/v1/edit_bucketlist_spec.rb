@@ -45,7 +45,8 @@ RSpec.describe "Edit Bucketlist", type: :request do
           HTTP_AUTHORIZATION:  set_login(bucketlist.user)
         )
 
-        expect(json_response["error"]).to eq "bucket does not exist"
+        expect(json_response["error"]).
+          to eq message.update_message(bucketlist, "bucket")
         expect(response).to have_http_status(404)
       end
     end
@@ -59,7 +60,7 @@ RSpec.describe "Edit Bucketlist", type: :request do
           name: "bucket3"
         )
 
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
         expect(response).to have_http_status(401)
       end
     end

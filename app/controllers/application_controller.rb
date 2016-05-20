@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     if decoded_auth_token && valid_token
       @current_user ||= User.find_by(id: decoded_auth_token["user_id"])
     else
-      render json: { error: "unauthorized access" }, status: 401
+      render json: { error: message.unauthorized_access }, status: 401
     end
   end
 
@@ -24,10 +24,14 @@ class ApplicationController < ActionController::API
     Token.find_by(token: auth_token)
   end
 
+  def message
+    @messages ||= Messages.new
+  end
+
   def no_route_found
     render(
       json: {
-        error: "Invalid address specify a valid endpoint!"
+        error: message.invalid_address
       },
       status: 404
     )

@@ -30,7 +30,7 @@ class Api::V1::ItemsController < ApplicationController
     @bucketlist = Bucketlist.find_by(id: params[:bucketlist_id])
 
     unless @bucketlist && @bucketlist.user_bucket?(current_user)
-      render json: { error: "Unauthorized" }, status: 403
+      render json: { error: message.check_user_bucket }, status: 403
     end
   end
 

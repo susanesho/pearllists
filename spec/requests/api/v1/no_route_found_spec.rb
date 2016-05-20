@@ -8,7 +8,7 @@ RSpec.describe "No route found", type: :request do
         expect(response).to have_http_status(404)
         expect(
           json_response["error"]
-        ).to eq "Invalid address specify a valid endpoint!"
+        ).to eq message.invalid_address
       end
     end
   end
