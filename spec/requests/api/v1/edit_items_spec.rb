@@ -30,7 +30,7 @@ RSpec.describe "Edit items", type: :request do
           HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        expect(json_response["name"]).to eq ["can't be blank"]
+        expect(json_response["name"]).to be_truthy
         expect(response).to have_http_status(400)
       end
     end
