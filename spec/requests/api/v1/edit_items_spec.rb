@@ -1,12 +1,12 @@
 require "rails_helper"
-RSpec.describe "Edit  @items", type: :request do
+RSpec.describe "Edit items", type: :request do
   after(:all) do
     Item.destroy_all
   end
 
   describe "put /bucketlists/:id/items/:id" do
-    context "when a bucketlist  @item exists for user" do
-      it "updates the  @item" do
+    context "when a bucketlist item exists for user" do
+      it "updates the item" do
         item = create(:item)
 
         put(
@@ -21,7 +21,7 @@ RSpec.describe "Edit  @items", type: :request do
     end
 
     context "when updating with invalid params" do
-      it "does not update  @item" do
+      it "does not update item" do
         item = create(:item)
 
         put(
@@ -35,7 +35,7 @@ RSpec.describe "Edit  @items", type: :request do
       end
     end
 
-    context "when  @item does not exist for user" do
+    context "when item does not exist for user" do
       it "renders error" do
         item = create(:item)
 
@@ -45,7 +45,8 @@ RSpec.describe "Edit  @items", type: :request do
           HTTP_AUTHORIZATION: set_login(item.bucketlist.user)
         )
 
-        expect(json_response["error"]).to eq "item does not exist"
+        expect(json_response["error"]).
+          to eq message.update_message(item, "item")
         expect(response).to have_http_status(404)
       end
     end
@@ -59,7 +60,7 @@ RSpec.describe "Edit  @items", type: :request do
           name: "buck"
         )
 
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
         expect(response).to have_http_status(401)
       end
     end

@@ -15,7 +15,8 @@ RSpec.describe "Delete Bucketlist", type: :request do
           HTTP_AUTHORIZATION: set_login(bucketlist.user)
         )
 
-        expect(json_response["message"]).to eq "bucket destroyed"
+        expect(json_response["message"]).
+          to eq message.delete_success_message(bucketlist, "bucket")
         expect(Bucketlist.count).to eq 0
         expect(response).to have_http_status(200)
       end
@@ -32,7 +33,8 @@ RSpec.describe "Delete Bucketlist", type: :request do
           set_login(bucketlist.user)
         )
 
-        expect(json_response["error"]).to eq "bucket was not destroyed"
+        expect(json_response["error"]).
+          to eq message.delete_error_message(bucketlist, "bucket")
         expect(Bucketlist.count).to eq 1
         expect(response).to have_http_status(404)
       end
@@ -47,7 +49,7 @@ RSpec.describe "Delete Bucketlist", type: :request do
           nil
         )
 
-        expect(json_response["error"]).to eq "unauthorized access"
+        expect(json_response["error"]).to eq message.unauthorized_access
         expect(response).to have_http_status(401)
       end
     end

@@ -16,7 +16,7 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlists = current_user.bucketlists.search(params[:q]).paginate(params)
 
     if bucketlists.empty?
-      render json: { error: "no buckets found" }, status: 404
+      render json: { error: message.no_bucket_found }, status: 404
     else
       render json: bucketlists, status: 200
     end
@@ -28,7 +28,7 @@ class Api::V1::BucketlistsController < ApplicationController
     if bucketlist
       render json: bucketlist, status: 200
     else
-      render json: { error: "no bucket found" }, status: 404
+      render json: { error: message.no_bucket_found }, status: 404
     end
   end
 
