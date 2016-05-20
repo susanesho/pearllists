@@ -31,7 +31,7 @@ RSpec.describe "Create Items", type: :request do
         )
 
         expect(response).to have_http_status(400)
-        expect(json_response["name"]).to eq ["can't be blank"]
+        expect(json_response["name"]).to be_truthy
       end
     end
 
