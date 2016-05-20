@@ -34,7 +34,7 @@ RSpec.describe "Create Bucketlist", type: :request do
         )
 
         expect(response).to have_http_status(400)
-        expect(json_response["name"]).to be_truthy
+        expect(json_response["name"][0]).to eq message.blank_field
       end
     end
 

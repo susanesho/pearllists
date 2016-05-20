@@ -35,6 +35,10 @@ class Messages
     "Not authorized to modify"
   end
 
+  def blank_field
+    "can't be blank"
+  end
+
   def delete_success_message(_list, name)
     "#{name} destroyed"
   end
