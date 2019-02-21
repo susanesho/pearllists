@@ -12,6 +12,7 @@ gem "jwt"
 gem "active_model_serializers"
 gem "simplecov", require: false, group: :test
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem "rack-cors", require: "rack/cors"
 group :development, :test do
   gem "sqlite3"
   gem "byebug"
